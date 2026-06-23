@@ -97,16 +97,31 @@ const LINKS = [
   { section:"Hợp tác", icon:"🤝", label:"Hợp tác / tài trợ", sub:"liên hệ làm video", url:"mailto:baotin22071998@gmail.com" },
 ];
 
+const slug = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯđ]/g, m => m==="đ"?"d":"")
+  .replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
 const wrap = document.getElementById("links");
 let html = "";
 LINKS.forEach(l=>{
   if(l.section) html += `<div class="seg">${l.section}</div>`;
   const right = l.tag ? `<span class="tag">${l.tag}</span>` : `<span class="chev">›</span>`;
   const sub = l.sub ? `<span class="sub">${l.sub}</span>` : "";
-  html += `<a class="btn ${l.primary?'primary':''}" href="${l.url}" target="_blank" rel="noopener nofollow">
+  const track = slug(l.label) + (l.tag==="AFFILIATE" ? "-aff" : "");
+  html += `<a class="btn ${l.primary?'primary':''}" href="${l.url}" target="_blank" rel="noopener nofollow" data-track="${track}">
     <span class="ic">${l.icon}</span><span class="tx"><span class="lbl">${l.label}</span>${sub}</span>${right}</a>`;
 });
 wrap.innerHTML = html;
+
+/* ── Đếm click từng tab (gửi event lên GoatCounter; no-op nếu chưa cấu hình) ── */
+document.addEventListener("click", e => {
+  const a = e.target.closest("a.btn[data-track]");
+  if(!a) return;
+  const name = a.getAttribute("data-track");
+  try {
+    if (window.goatcounter && window.goatcounter.count) {
+      window.goatcounter.count({ path: "click/" + name, title: a.querySelector(".lbl")?.textContent || name, event: true });
+    }
+  } catch(_) {}
+});
 document.getElementById("av").innerHTML = PROFILE.avatar;
 document.getElementById("nm").childNodes[0].nodeValue = PROFILE.name + " ";
 document.getElementById("hd").textContent = PROFILE.handle;
@@ -145,5 +160,11 @@ document.title = PROFILE.name + " — Links";
   addEventListener("resize",resize); resize(); requestAnimationFrame(frame);
 })();
 </script>
+
+<!-- ANALYTICS: đếm lượt click từng tab (GoatCounter, miễn phí).
+     BƯỚC DUY NHẤT ANH CẦN LÀM: đăng ký goatcounter.com → đổi YOURCODE bên dưới thành mã site của anh.
+     Dashboard sẽ hiện mỗi tab dưới dạng "click/<tên-tab>" (tab affiliate có hậu tố -aff). -->
+<script data-goatcounter="https://60s-congnghe.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
