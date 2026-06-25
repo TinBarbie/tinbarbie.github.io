@@ -13,6 +13,13 @@
   :root{
     --bg:#0a0b12; --card:#141627; --card2:#171a2e; --ink:#eef1ff; --dim:#9aa3c7;
     --line:#262a45; --a1:#8B5CF6; --a2:#22D3EE;
+}
+.toast{position:fixed;left:50%;bottom:38px;transform:translateX(-50%) translateY(24px);z-index:99;
+  max-width:88%;padding:14px 22px;border-radius:14px;font-size:15px;font-weight:600;color:#04201c;
+  background:var(--a2);box-shadow:0 12px 40px rgba(0,0,0,.45),0 0 30px rgba(34,211,238,.4);
+  opacity:0;pointer-events:none;transition:opacity .3s, transform .35s cubic-bezier(.22,1,.36,1);}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0);}
+:root{
   }
   *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
   body{background:
@@ -53,6 +60,7 @@
 </head>
 <body>
 <canvas id="stars"></canvas>
+<div id="toast" class="toast"></div>
 <div class="page">
   <div class="avatar" id="av">🦌</div>
   <div class="name" id="nm">Tên kênh của bạn <span class="v">✔</span></div>
@@ -107,7 +115,11 @@ LINKS.forEach(l=>{
   const right = l.tag ? `<span class="tag">${l.tag}</span>` : `<span class="chev">›</span>`;
   const sub = l.sub ? `<span class="sub">${l.sub}</span>` : "";
   const track = slug(l.label) + (l.tag==="AFFILIATE" ? "-aff" : "");
-  html += `<a class="btn ${l.primary?'primary':''}" href="${l.url}" target="_blank" rel="noopener nofollow" data-track="${track}">
+  const isMail = l.url.startsWith("mailto:");
+  const email = isMail ? l.url.slice(7) : "";
+  // mailto fails in in-app browsers (IG/TikTok webview) → copy email + toast instead of navigating
+  const attrs = isMail ? `data-email="${email}"` : `target="_blank" rel="noopener nofollow"`;
+  html += `<a class="btn ${l.primary?'primary':''}" href="${l.url}" ${attrs} data-track="${track}">
     <span class="ic">${l.icon}</span><span class="tx"><span class="lbl">${l.label}</span>${sub}</span>${right}</a>`;
 });
 wrap.innerHTML = html;
@@ -122,7 +134,30 @@ document.addEventListener("click", e => {
       window.goatcounter.count({ path: "click/" + name, title: a.querySelector(".lbl")?.textContent || name, event: true });
     }
   } catch(_) {}
+  // contact link: mailto breaks in in-app browsers → copy the email + toast instead
+  const email = a.getAttribute("data-email");
+  if (email) {
+    e.preventDefault();
+    const ok = () => showToast("📋 Đã sao chép email · dán vào Mail nhé");
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(email).then(ok).catch(() => fallbackCopy(email, ok));
+    } else { fallbackCopy(email, ok); }
+  }
 });
+function fallbackCopy(text, done){
+  try {
+    const ta = document.createElement("textarea");
+    ta.value = text; ta.setAttribute("readonly",""); ta.style.position="fixed"; ta.style.opacity="0";
+    document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, text.length);
+    document.execCommand("copy"); document.body.removeChild(ta); done();
+  } catch(_) { showToast("✉️ " + text); }
+}
+let _toastT;
+function showToast(msg){
+  const t = document.getElementById("toast");
+  t.textContent = msg; t.classList.add("on");
+  clearTimeout(_toastT); _toastT = setTimeout(() => t.classList.remove("on"), 2600);
+}
 document.getElementById("av").innerHTML = PROFILE.avatar;
 document.getElementById("nm").childNodes[0].nodeValue = PROFILE.name + " ";
 document.getElementById("hd").textContent = PROFILE.handle;
