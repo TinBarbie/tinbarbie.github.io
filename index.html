@@ -3,23 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Tên kênh của bạn — Links</title>
-<meta name="description" content="Tất cả link của kênh — TikTok, YouTube, tool & đồ nghề mình dùng.">
-<!-- Open Graph (hiện thumbnail đẹp khi share link) -->
-<meta property="og:title" content="Tên kênh của bạn — Links">
-<meta property="og:description" content="Mỗi ngày 1 repo GitHub hay ho — tools mình dùng ở đây.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0b12">
+<title>60s Công Nghệ Cùng Tin — Links</title>
+<meta name="description" content="Mỗi ngày 1 repo GitHub hay ho — cho dev, gamer, người học AI. Tool & đồ nghề mình dùng ở đây.">
+<link rel="icon" href="avatar.png">
+<!-- Open Graph + Twitter (thumbnail đẹp khi share link) -->
+<meta property="og:title" content="60s Công Nghệ Cùng Tin — Links">
+<meta property="og:description" content="Mỗi ngày 1 repo GitHub hay ho — tool & đồ nghề mình dùng ở đây.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://tinbarbie.github.io/">
+<meta property="og:image" content="https://tinbarbie.github.io/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tinbarbie.github.io/og.png">
 <style>
   :root{
     --bg:#0a0b12; --card:#141627; --card2:#171a2e; --ink:#eef1ff; --dim:#9aa3c7;
     --line:#262a45; --a1:#8B5CF6; --a2:#22D3EE;
-}
-.toast{position:fixed;left:50%;bottom:38px;transform:translateX(-50%) translateY(24px);z-index:99;
-  max-width:88%;padding:14px 22px;border-radius:14px;font-size:15px;font-weight:600;color:#04201c;
-  background:var(--a2);box-shadow:0 12px 40px rgba(0,0,0,.45),0 0 30px rgba(34,211,238,.4);
-  opacity:0;pointer-events:none;transition:opacity .3s, transform .35s cubic-bezier(.22,1,.36,1);}
-.toast.on{opacity:1;transform:translateX(-50%) translateY(0);}
-:root{
   }
   *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
   body{background:
@@ -39,33 +39,65 @@
   .seg{align-self:flex-start;color:var(--dim);font-size:12.5px;font-weight:700;letter-spacing:.12em;
     text-transform:uppercase;margin:18px 4px 9px}
   .seg:first-of-type{margin-top:2px}
+  .seg .note{display:block;text-transform:none;letter-spacing:0;font-weight:500;color:#8089ad;font-size:12px;margin-top:3px}
+  /* simple link buttons (socials / contact) */
   a.btn{width:100%;display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--ink);
     background:var(--card);border:1px solid var(--line);border-radius:16px;padding:15px 16px;margin-bottom:11px;
-    transition:transform .12s ease,background .12s ease,border-color .12s ease;position:relative}
+    transition:transform .12s ease,background .12s ease,border-color .12s ease;position:relative;touch-action:manipulation}
   a.btn:hover{transform:translateY(-2px);background:var(--card2);border-color:#3a3f6b}
   a.btn:active{transform:scale(.985)}
   a.btn.primary{border-color:var(--a1);box-shadow:0 0 0 1px #8b5cf655, 0 10px 34px #8b5cf526}
+  a.btn:focus-visible,a.pcard:focus-visible{outline:none;box-shadow:0 0 0 3px var(--a2),0 0 0 6px #22d3ee44}
   .ic{flex:0 0 44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:23px;
     background:#ffffff0d;border:1px solid var(--line)}
   .tx{display:flex;flex-direction:column;min-width:0}
-  .lbl{font-size:16px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .sub{font-size:12.5px;color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .lbl{font-size:16px;font-weight:700;overflow:hidden;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical}
+  .sub{font-size:12.5px;color:var(--dim);overflow:hidden;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical}
   .chev{margin-left:auto;color:var(--dim);font-size:18px;flex:0 0 auto}
-  .tag{margin-left:auto;font-size:10.5px;font-weight:800;letter-spacing:.06em;color:#0a0b12;
+  .tag{font-size:10.5px;font-weight:800;letter-spacing:.06em;color:#0a0b12;
     background:var(--a2);border-radius:999px;padding:3px 9px;flex:0 0 auto}
-  .disc{font-size:11.5px;color:#ffffff;text-align:center;line-height:1.55;margin:20px 8px 8px;
+  .btn .tag{margin-left:auto}
+  /* affiliate PRODUCT CARDS — bigger, image + why + price + clear CTA */
+  a.pcard{width:100%;display:flex;gap:14px;text-decoration:none;color:var(--ink);
+    background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:18px;
+    padding:14px;margin-bottom:12px;position:relative;transition:transform .12s ease,border-color .12s ease,box-shadow .12s ease;touch-action:manipulation}
+  a.pcard:hover{transform:translateY(-2px);border-color:#3a3f6b}
+  a.pcard.star{border-color:var(--a1);box-shadow:0 0 0 1px #8b5cf655,0 12px 36px #8b5cf522}
+  .pimg{flex:0 0 76px;height:76px;border-radius:14px;display:grid;place-items:center;font-size:38px;overflow:hidden;
+    background:radial-gradient(120% 120% at 30% 20%,#2a2f55,#11132a);border:1px solid var(--line)}
+  .pimg img{width:100%;height:100%;object-fit:cover}
+  .pbody{display:flex;flex-direction:column;min-width:0;flex:1;gap:3px}
+  .ptop{display:flex;align-items:center;gap:8px}
+  .pname{font-size:16px;font-weight:800;line-height:1.2;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+  .pwhy{font-size:13px;color:var(--dim);line-height:1.35;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+  .prow{display:flex;align-items:center;gap:10px;margin-top:6px}
+  .price{font-size:13px;font-weight:800;color:#34D399}
+  .pcta{margin-left:auto;font-size:13px;font-weight:800;color:#0a0b12;background:var(--a2);border-radius:10px;padding:7px 14px}
+  .pill{font-size:9.5px;font-weight:800;letter-spacing:.05em;border-radius:999px;padding:2px 7px}
+  .pill.aff{color:#0a0b12;background:var(--a2)}
+  .pill.best{color:#0a0b12;background:#FBBF24}
+  .disc{font-size:11.5px;color:#cfd5ff;text-align:center;line-height:1.55;margin:20px 8px 8px;
     border-top:1px solid var(--line);padding-top:16px;width:100%}
-  .foot{font-size:11px;color:#ffffff;margin-top:10px}
+  .foot{font-size:11px;color:#cfd5ff;margin-top:10px}
+  .toast{position:fixed;left:50%;bottom:38px;transform:translateX(-50%) translateY(24px);z-index:99;
+    max-width:88%;padding:14px 22px;border-radius:14px;font-size:15px;font-weight:600;color:#04201c;
+    background:var(--a2);box-shadow:0 12px 40px rgba(0,0,0,.45),0 0 30px rgba(34,211,238,.4);
+    opacity:0;pointer-events:none;transition:opacity .3s, transform .35s cubic-bezier(.22,1,.36,1)}
+  .toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important;animation:none !important}
+    #stars{display:none}
+  }
 </style>
 </head>
 <body>
-<canvas id="stars"></canvas>
-<div id="toast" class="toast"></div>
+<canvas id="stars" aria-hidden="true"></canvas>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
 <div class="page">
   <div class="avatar" id="av">🦌</div>
-  <div class="name" id="nm">Tên kênh của bạn <span class="v">✔</span></div>
-  <div class="handle" id="hd">@yourhandle</div>
-  <div class="bio" id="bio"></div>
+  <h1 class="name" id="nm">60s Công Nghệ Cùng Tin <span class="v" aria-hidden="true">✔</span></h1>
+  <div class="handle" id="hd">@60s.cong.nghe.cung.tin</div>
+  <p class="bio" id="bio"></p>
   <div id="links" style="width:100%"></div>
   <div class="disc">
     Một số link bên trên là <b>affiliate</b> — nếu bạn mua/đăng ký qua đó, mình có thể nhận một ít hoa hồng,
@@ -76,131 +108,114 @@
 
 <script>
 /* ─────────────────────────────────────────────────────────────
-   CHỈNH Ở ĐÂY — chỉ cần sửa khối này, không động phần dưới.
-   • PROFILE: avatar (emoji) / name / handle / bio
-   • LINKS: mỗi { } là 1 nút. Thay "url" bằng link THẬT.
-       section : tiêu đề nhóm (bỏ trống nếu cùng nhóm nút trên)
-       tag     : nhãn nhỏ phải (vd "AFFILIATE"); bỏ đi nếu không cần
-       primary : true → nút nổi bật (viền tím)
-   • Muốn avatar là ẢNH thật: đặt file logo.png cạnh index.html rồi
-     đổi avatar:"🦌" → avatar:'<img src="logo.png" alt="">'
+   CHỈNH Ở ĐÂY.
+   • PROFILE: avatar / name / handle / bio
+   • LINKS  : nút thường (mạng xã hội / liên hệ)
+   • PRODUCTS: thẻ sản phẩm affiliate — ĐIỀN name / why / price / img / url THẬT.
+       img : "products/abc.png" (đặt ảnh cạnh index.html) — bỏ trống thì hiện emoji
+       best: true → gắn nhãn vàng "ĐÁNG TIỀN NHẤT"
    ───────────────────────────────────────────────────────────── */
 const PROFILE = {
-  avatar: '<img src="avatar.png" alt="">',
+  avatar: '<img src="avatar.png" alt="60s Công Nghệ Cùng Tin" width="104" height="104">',
   name:   "60s Công Nghệ Cùng Tin",
   handle: "@60s.cong.nghe.cung.tin",
-  bio:    "Mỗi ngày 1 repo GitHub hay ho 🔥 — cho dev · gamer · người học AI. Tool & đồ nghề mình dùng ở dưới 👇"
+  bio:    "Mỗi ngày 1 repo GitHub hay ho 🔥 — cho dev · gamer · người học AI. Tool & đồ nghề mình thật sự dùng ở dưới 👇"
 };
 const LINKS = [
   { section:"Theo dõi mình", icon:"🎵", label:"TikTok", sub:"@60s.cong.nghe.cung.tin", url:"https://www.tiktok.com/@60s.cong.nghe.cung.tin", primary:true },
   { icon:"📘", label:"Facebook", sub:"theo dõi thêm trên Facebook", url:"https://www.facebook.com/profile.php?id=61581490000312" },
   { icon:"📸", label:"Instagram", sub:"@60s_cong_nghe_cung_tin", url:"https://www.instagram.com/60s_cong_nghe_cung_tin/" },
-
-  { section:"Tool & sách mình dùng", icon:"🎙️", label:"ElevenLabs — giọng AI mình xài", sub:"tạo voiceover chất", url:"https://try.elevenlabs.io/61mv3aj67c86", tag:"AFFILIATE" },
-  { icon:"📚", label:"Sách AI mình gối đầu", sub:"cuốn mình đọc đi đọc lại", url:"https://vt.tiktok.com/ZS96JHPu2jLJy-FKXZC/", tag:"AFFILIATE" },
-
-  { section:"Đồ nghề", icon:"🖱️", label:"Chuột mình dùng", sub:"daily driver", url:"https://vt.tiktok.com/ZS96JHG4LNHfS-Rej69/", tag:"AFFILIATE" },
-  { icon:"⌨️", label:"Bàn phím mình gõ", sub:"gõ cả ngày không mỏi", url:"https://vt.tiktok.com/ZS96J9mc2b84S-pryON/", tag:"AFFILIATE" },
-  { icon:"🖥️", label:"Màn hình nhìn mỗi ngày", sub:"dựng video · code", url:"https://vt.tiktok.com/ZS96J9SM44CCS-hS6W2/", tag:"AFFILIATE" },
-
-  { section:"Hợp tác", icon:"🤝", label:"Hợp tác / tài trợ", sub:"liên hệ làm video", url:"mailto:baotin22071998@gmail.com" },
 ];
+const PRODUCTS = [
+  { emoji:"🎙️", name:"ElevenLabs — giọng AI mình lồng tiếng video", why:"Cái mình dùng để tạo voiceover cho mọi video. Có bản miễn phí để thử.", price:"Có bản FREE", url:"https://try.elevenlabs.io/61mv3aj67c86", best:true },
+  { emoji:"📚", name:"Sách AI mình gối đầu", why:"Cuốn mình đọc đi đọc lại để hiểu AI từ gốc.", price:"Xem giá", url:"https://vt.tiktok.com/ZS96JHPu2jLJy-FKXZC/" },
+  { emoji:"🖱️", name:"Chuột mình dùng hằng ngày", why:"Daily driver — dựng video, code cả ngày.", price:"Xem giá", url:"https://vt.tiktok.com/ZS96JHG4LNHfS-Rej69/" },
+  { emoji:"⌨️", name:"Bàn phím mình gõ", why:"Gõ cả ngày không mỏi tay.", price:"Xem giá", url:"https://vt.tiktok.com/ZS96J9mc2b84S-pryON/" },
+  { emoji:"🖥️", name:"Màn hình mình nhìn mỗi ngày", why:"Dựng video & code rõ nét, đỡ mỏi mắt.", price:"Xem giá", url:"https://vt.tiktok.com/ZS96J9SM44CCS-hS6W2/" },
+];
+const CONTACT = { section:"Hợp tác", icon:"🤝", label:"Hợp tác / tài trợ", sub:"liên hệ làm video", url:"mailto:baotin22071998@gmail.com" };
 
-const slug = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯđ]/g, m => m==="đ"?"d":"")
+const slug = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ đ]/g, m => m==="đ"?"d":"")
   .replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const wrap = document.getElementById("links");
 let html = "";
+
 LINKS.forEach(l=>{
   if(l.section) html += `<div class="seg">${l.section}</div>`;
-  const right = l.tag ? `<span class="tag">${l.tag}</span>` : `<span class="chev">›</span>`;
-  const sub = l.sub ? `<span class="sub">${l.sub}</span>` : "";
-  const track = slug(l.label) + (l.tag==="AFFILIATE" ? "-aff" : "");
-  const isMail = l.url.startsWith("mailto:");
-  const email = isMail ? l.url.slice(7) : "";
-  // mailto fails in in-app browsers (IG/TikTok webview) → copy email + toast instead of navigating
-  const attrs = isMail ? `data-email="${email}"` : `target="_blank" rel="noopener nofollow"`;
-  html += `<a class="btn ${l.primary?'primary':''}" href="${l.url}" ${attrs} data-track="${track}">
-    <span class="ic">${l.icon}</span><span class="tx"><span class="lbl">${l.label}</span>${sub}</span>${right}</a>`;
+  const sub = l.sub ? `<span class="sub">${esc(l.sub)}</span>` : "";
+  html += `<a class="btn ${l.primary?'primary':''}" href="${l.url}" target="_blank" rel="noopener nofollow" data-track="${slug(l.label)}">
+    <span class="ic" aria-hidden="true">${l.icon}</span><span class="tx"><span class="lbl">${esc(l.label)}</span>${sub}</span><span class="chev" aria-hidden="true">›</span></a>`;
 });
+
+html += `<div class="seg">🛠️ Đồ nghề & tool mình thật sự dùng<span class="note">Đúng món mình dùng để làm mấy video bạn xem. Link affiliate — ủng hộ kênh nha 🙏</span></div>`;
+PRODUCTS.forEach(p=>{
+  const img = p.img ? `<img src="${p.img}" alt="${esc(p.name)}" width="76" height="76">` : `<span aria-hidden="true">${p.emoji||"🔗"}</span>`;
+  const pills = `${p.best?'<span class="pill best">ĐÁNG TIỀN NHẤT</span>':''}<span class="pill aff">AFFILIATE</span>`;
+  html += `<a class="pcard ${p.best?'star':''}" href="${p.url}" target="_blank" rel="noopener nofollow sponsored" data-track="${slug(p.name)}-aff">
+    <span class="pimg">${img}</span>
+    <span class="pbody">
+      <span class="ptop">${pills}</span>
+      <span class="pname">${esc(p.name)}</span>
+      <span class="pwhy">${esc(p.why)}</span>
+      <span class="prow"><span class="price">${esc(p.price||"Xem giá")}</span><span class="pcta">Xem ngay ›</span></span>
+    </span></a>`;
+});
+
+html += `<div class="seg">${CONTACT.section}</div>`;
+html += `<a class="btn" href="${CONTACT.url}" data-email="${CONTACT.url.slice(7)}" data-track="${slug(CONTACT.label)}">
+  <span class="ic" aria-hidden="true">${CONTACT.icon}</span><span class="tx"><span class="lbl">${esc(CONTACT.label)}</span><span class="sub">${esc(CONTACT.sub)}</span></span><span class="chev" aria-hidden="true">›</span></a>`;
+
 wrap.innerHTML = html;
 
-/* ── Đếm click từng tab (gửi event lên GoatCounter; no-op nếu chưa cấu hình) ── */
 document.addEventListener("click", e => {
-  const a = e.target.closest("a.btn[data-track]");
+  const a = e.target.closest("a[data-track]");
   if(!a) return;
   const name = a.getAttribute("data-track");
-  try {
-    if (window.goatcounter && window.goatcounter.count) {
-      window.goatcounter.count({ path: "click/" + name, title: a.querySelector(".lbl")?.textContent || name, event: true });
-    }
-  } catch(_) {}
-  // contact link: mailto breaks in in-app browsers → copy the email + toast instead
+  try { if (window.goatcounter && window.goatcounter.count)
+    window.goatcounter.count({ path: "click/" + name, title: a.querySelector(".lbl,.pname")?.textContent || name, event: true }); } catch(_) {}
   const email = a.getAttribute("data-email");
   if (email) {
     e.preventDefault();
     const ok = () => showToast("📋 Đã sao chép email · dán vào Mail nhé");
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(email).then(ok).catch(() => fallbackCopy(email, ok));
-    } else { fallbackCopy(email, ok); }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(email).then(ok).catch(() => fallbackCopy(email, ok));
+    else fallbackCopy(email, ok);
   }
 });
 function fallbackCopy(text, done){
-  try {
-    const ta = document.createElement("textarea");
-    ta.value = text; ta.setAttribute("readonly",""); ta.style.position="fixed"; ta.style.opacity="0";
-    document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, text.length);
-    document.execCommand("copy"); document.body.removeChild(ta); done();
+  try { const ta=document.createElement("textarea"); ta.value=text; ta.setAttribute("readonly",""); ta.style.position="fixed"; ta.style.opacity="0";
+    document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0,text.length); document.execCommand("copy"); document.body.removeChild(ta); done();
   } catch(_) { showToast("✉️ " + text); }
 }
 let _toastT;
-function showToast(msg){
-  const t = document.getElementById("toast");
-  t.textContent = msg; t.classList.add("on");
-  clearTimeout(_toastT); _toastT = setTimeout(() => t.classList.remove("on"), 2600);
-}
+function showToast(msg){ const t=document.getElementById("toast"); t.textContent=msg; t.classList.add("on"); clearTimeout(_toastT); _toastT=setTimeout(()=>t.classList.remove("on"),2600); }
+
 document.getElementById("av").innerHTML = PROFILE.avatar;
 document.getElementById("nm").childNodes[0].nodeValue = PROFILE.name + " ";
 document.getElementById("hd").textContent = PROFILE.handle;
 document.getElementById("bio").textContent = PROFILE.bio;
 document.title = PROFILE.name + " — Links";
 
-/* ── nền sao bay (drifting glowing particles, tông tím/cyan như DeckBg video) ── */
+/* nền sao bay — tắt khi prefers-reduced-motion */
 (function(){
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   const c=document.getElementById("stars"), x=c.getContext("2d");
   const COLORS=["#ffffff","#ffffff","#ffffff","#8B5CF6","#22D3EE"];
   let w,h,dpr,ps=[];
-  function resize(){
-    dpr=Math.min(2,window.devicePixelRatio||1);
-    w=c.width=innerWidth*dpr; h=c.height=innerHeight*dpr;
+  function resize(){ dpr=Math.min(2,window.devicePixelRatio||1); w=c.width=innerWidth*dpr; h=c.height=innerHeight*dpr;
     c.style.width=innerWidth+"px"; c.style.height=innerHeight+"px";
-    const n=Math.min(150,Math.round(innerWidth*innerHeight/6000));
-    ps=[];
-    for(let i=0;i<n;i++) ps.push({
-      x:Math.random()*w, y:Math.random()*h, r:(Math.random()*1.6+0.5)*dpr,
-      vx:(Math.random()-0.5)*0.12*dpr, vy:(-Math.random()*0.18-0.04)*dpr,
-      a:Math.random()*0.6+0.2, tw:Math.random()*6.28, col:COLORS[(Math.random()*COLORS.length)|0]
-    });
+    const n=Math.min(150,Math.round(innerWidth*innerHeight/6000)); ps=[];
+    for(let i=0;i<n;i++) ps.push({x:Math.random()*w,y:Math.random()*h,r:(Math.random()*1.6+0.5)*dpr,
+      vx:(Math.random()-0.5)*0.12*dpr,vy:(-Math.random()*0.18-0.04)*dpr,a:Math.random()*0.6+0.2,tw:Math.random()*6.28,col:COLORS[(Math.random()*COLORS.length)|0]});
   }
-  function frame(){
-    x.clearRect(0,0,w,h);
-    for(const p of ps){
-      p.x+=p.vx; p.y+=p.vy; p.tw+=0.02;
+  function frame(){ x.clearRect(0,0,w,h);
+    for(const p of ps){ p.x+=p.vx; p.y+=p.vy; p.tw+=0.02;
       if(p.y<-12)p.y=h+12; if(p.x<-12)p.x=w+12; if(p.x>w+12)p.x=-12;
-      x.beginPath(); x.arc(p.x,p.y,p.r,0,6.2832);
-      x.fillStyle=p.col; x.globalAlpha=p.a*(0.55+0.45*Math.sin(p.tw));
-      x.shadowBlur=6*dpr; x.shadowColor=p.col; x.fill();
-    }
-    x.globalAlpha=1; x.shadowBlur=0;
-    requestAnimationFrame(frame);
-  }
+      x.beginPath(); x.arc(p.x,p.y,p.r,0,6.2832); x.fillStyle=p.col; x.globalAlpha=p.a*(0.55+0.45*Math.sin(p.tw)); x.shadowBlur=6*dpr; x.shadowColor=p.col; x.fill(); }
+    x.globalAlpha=1; x.shadowBlur=0; requestAnimationFrame(frame); }
   addEventListener("resize",resize); resize(); requestAnimationFrame(frame);
 })();
 </script>
-
-<!-- ANALYTICS: đếm lượt click từng tab (GoatCounter, miễn phí).
-     BƯỚC DUY NHẤT ANH CẦN LÀM: đăng ký goatcounter.com → đổi YOURCODE bên dưới thành mã site của anh.
-     Dashboard sẽ hiện mỗi tab dưới dạng "click/<tên-tab>" (tab affiliate có hậu tố -aff). -->
-<script data-goatcounter="https://60s-congnghe.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
+<script data-goatcounter="https://60s-congnghe.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
