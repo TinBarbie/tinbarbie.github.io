@@ -77,6 +77,11 @@
   .pill{font-size:9.5px;font-weight:800;letter-spacing:.05em;border-radius:999px;padding:2px 7px}
   .pill.aff{color:#0a0b12;background:var(--a2)}
   .pill.best{color:#0a0b12;background:#FBBF24}
+  .pill.mine{color:#0a0b12;background:#c9b8ff}
+  a.pcard.mine{border-color:#c9b8ff}
+  a.pcard.mine.star{box-shadow:0 0 0 1px #c9b8ff55,0 12px 36px #c9b8ff22}
+  a.pcard.mine .pcta{background:#c9b8ff}
+  a.pcard.mine .pwhy{-webkit-line-clamp:3}
   .disc{font-size:11.5px;color:#cfd5ff;text-align:center;line-height:1.55;margin:20px 8px 8px;
     border-top:1px solid var(--line);padding-top:16px;width:100%}
   .foot{font-size:11px;color:#cfd5ff;margin-top:10px}
@@ -231,6 +236,17 @@ PRODUCTS.forEach(p=>{
 html += `<div class="seg">${CONTACT.section}</div>`;
 html += `<a class="btn" href="${CONTACT.url}" data-email="${CONTACT.url.slice(7)}" data-track="${slug(CONTACT.label)}">
   <span class="ic" aria-hidden="true">${CONTACT.icon}</span><span class="tx"><span class="lbl">${esc(CONTACT.label)}</span><span class="sub">${esc(CONTACT.sub)}</span></span><span class="chev" aria-hidden="true">›</span></a>`;
+
+// Web nhỏ mình vibe code — chia sẻ cho audience (không phải affiliate)
+html += `<div class="seg">🌙 Web nhỏ mình vibe code<span class="note">Làm cho vui & chia sẻ — chưa thương mại hoá. Bạn dùng thấy hay thì mình sẽ phát triển tiếp 💜</span></div>`;
+html += `<a class="pcard mine star" href="https://sleepy-soundscape-z-ai.vercel.app/" target="_blank" rel="noopener" data-track="sleepy-soundscape">
+  <span class="pimg"><span aria-hidden="true">🌙</span></span>
+  <span class="pbody">
+    <span class="ptop"><span class="pill mine">MÌNH LÀM</span></span>
+    <span class="pname">Sleepy Soundscape</span>
+    <span class="pwhy">Web tự trộn âm thanh nền, dễ ngủ hơn và tập trung học · làm việc tốt hơn. Mình tự vibe code — miễn phí, hy vọng giúp ích cho bạn.</span>
+    <span class="prow"><span class="price" style="color:#c9b8ff">Miễn phí · thử ngay</span><span class="pcta">Mở web ›</span></span>
+  </span></a>`;
 
 wrap.innerHTML = html;
 
