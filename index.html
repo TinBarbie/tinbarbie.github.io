@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="dark">
-<meta name="theme-color" content="#0a0b12">
+<meta name="theme-color" content="#050816">
 <title>60s Công Nghệ Cùng Tin — Links</title>
 <meta name="description" content="Mỗi ngày 1 repo GitHub hay ho — cho dev, gamer, người học AI. Tool & đồ nghề mình dùng ở đây.">
 <link rel="icon" href="avatar.png">
@@ -18,15 +18,16 @@
 <meta name="twitter:image" content="https://tinbarbie.github.io/og.png">
 <style>
   :root{
-    --bg:#0a0b12; --card:#141627; --card2:#171a2e; --ink:#eef1ff; --dim:#9aa3c7;
+    --bg:#050816; --card:#141627; --card2:#171a2e; --ink:#eef1ff; --dim:#9aa3c7;
     --line:#262a45; --a1:#8B5CF6; --a2:#22D3EE;
   }
   *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
   body{background:
-      radial-gradient(120% 60% at 50% -8%, #1b1640 0%, transparent 55%),
-      radial-gradient(90% 50% at 50% 108%, #0a2a33 0%, transparent 55%), var(--bg);
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(101,112,196,.20), transparent 60%),
+      radial-gradient(ellipse 60% 50% at 80% 110%, rgba(40,60,120,.16), transparent 60%), var(--bg);
+    background-attachment:fixed;
     color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
-    min-height:100vh; display:flex; justify-content:center; padding:34px 18px calc(48px + env(safe-area-inset-bottom))}
+    min-height:100vh; position:relative; display:flex; justify-content:center; padding:34px 18px calc(48px + env(safe-area-inset-bottom))}
   #stars{position:fixed; inset:0; width:100%; height:100%; z-index:0; pointer-events:none}
   .page{width:100%; max-width:460px; display:flex; flex-direction:column; align-items:center; position:relative; z-index:1}
   .avatar{width:104px;height:104px;border-radius:50%;display:grid;place-items:center;font-size:50px;overflow:hidden;
@@ -84,14 +85,79 @@
     background:var(--a2);box-shadow:0 12px 40px rgba(0,0,0,.45),0 0 30px rgba(34,211,238,.4);
     opacity:0;pointer-events:none;transition:opacity .3s, transform .35s cubic-bezier(.22,1,.36,1)}
   .toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+  /* ===== Cosmic background — ported from sleepy-soundscape (BACKGROUND ONLY) ===== */
+  .cosmic-scene{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;opacity:.66}
+  .cosmic-parallax{position:absolute;inset:0;overflow:hidden}
+  .cos-obj{position:absolute;will-change:transform}
+  .cos-obj svg{width:100%;height:auto;display:block}
+  .cosmic-comets{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+  .moon{position:fixed;left:50%;top:20%;width:clamp(46px,7vw,70px);height:clamp(46px,7vw,70px);
+    border-radius:50%;transform:translate(-50%,-50%);z-index:0;pointer-events:none;
+    background:radial-gradient(circle at 34% 30%,#fffdf6 0%,#f5f0e0 42%,#e4dcc4 68%,#c4bca0 100%)}
+  .moon .crater{position:absolute;inset:0;border-radius:50%;opacity:.5;
+    background:radial-gradient(circle at 72% 64%,rgba(120,110,90,.25) 0 9%,transparent 10%),
+      radial-gradient(circle at 40% 70%,rgba(120,110,90,.18) 0 6%,transparent 7%),
+      radial-gradient(circle at 58% 38%,rgba(120,110,90,.14) 0 5%,transparent 6%)}
+  .moon-glow{box-shadow:0 0 24px 6px rgba(245,240,224,.28),0 0 80px 24px rgba(245,240,224,.12),0 0 160px 60px rgba(160,170,255,.06)}
+  @keyframes cos-float{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-14px) rotate(3deg)}}
+  .cos-float{animation:cos-float 7s ease-in-out infinite}
+  @keyframes cos-drift{0%{transform:translateX(-14px)}100%{transform:translateX(14px)}}
+  .cos-drift{animation:cos-drift 15s ease-in-out infinite alternate}
+  @keyframes cos-spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+  .cos-spin{animation:cos-spin 44s linear infinite}
+  @keyframes cos-sway{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-9px) rotate(1.5deg)}}
+  .cos-sway{animation:cos-sway 11s ease-in-out infinite}
+  @keyframes cos-comet{0%{transform:translate3d(0,0,0) rotate(-20deg);opacity:0}5%{opacity:1}24%{opacity:.9}40%{opacity:0}100%{transform:translate3d(-130vw,72vh,0) rotate(-20deg);opacity:0}}
+  .cos-comet{animation-name:cos-comet;animation-timing-function:linear;animation-iteration-count:infinite}
   @media (prefers-reduced-motion: reduce){
     *{transition:none !important;animation:none !important}
-    #stars{display:none}
+    #stars,.cosmic-comets{display:none}
   }
 </style>
 </head>
 <body>
 <canvas id="stars" aria-hidden="true"></canvas>
+<!-- ===== Cosmic background scene (parallax mascots) — ported from sleepy-soundscape ===== -->
+<div class="cosmic-scene" aria-hidden="true">
+  <div class="cosmic-parallax">
+    <!-- nebula (lavender) -->
+    <div class="cos-obj" data-depth="0.06" style="top:5vh;left:-12vw;width:clamp(220px,42vw,480px);opacity:.5">
+      <div class="cos-sway"><svg viewBox="0 0 200 200" style="filter:blur(26px)"><defs><radialGradient id="nebA" cx="42%" cy="40%" r="62%"><stop offset="0%" stop-color="#c9b8ff" stop-opacity=".55"/><stop offset="45%" stop-color="#c9b8ff" stop-opacity=".22"/><stop offset="100%" stop-color="#c9b8ff" stop-opacity="0"/></radialGradient></defs><circle cx="100" cy="100" r="100" fill="url(#nebA)"/></svg></div>
+    </div>
+    <!-- ringed planet -->
+    <div class="cos-obj" data-depth="0.12" style="top:19vh;left:66vw;width:clamp(130px,24vw,270px);opacity:.68">
+      <div class="cos-sway"><svg viewBox="0 0 220 150"><defs><radialGradient id="rpA" cx="38%" cy="34%" r="72%"><stop offset="0%" stop-color="#aab6ff"/><stop offset="48%" stop-color="#7f8fe6"/><stop offset="100%" stop-color="#3a4486"/></radialGradient><linearGradient id="rgA" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#c9b8ff" stop-opacity="0"/><stop offset="50%" stop-color="#e7deff" stop-opacity=".85"/><stop offset="100%" stop-color="#c9b8ff" stop-opacity="0"/></linearGradient></defs><ellipse cx="110" cy="78" rx="98" ry="22" fill="none" stroke="url(#rgA)" stroke-width="7" transform="rotate(-18 110 78)" opacity=".5"/><circle cx="110" cy="72" r="46" fill="url(#rpA)"/><ellipse cx="110" cy="66" rx="44" ry="6" fill="#c9d2ff" opacity=".18"/><ellipse cx="110" cy="82" rx="40" ry="5" fill="#2c356e" opacity=".25"/><path d="M 18 92 A 98 22 0 0 0 202 64" fill="none" stroke="url(#rgA)" stroke-width="7" transform="rotate(-18 110 78)" opacity=".9"/></svg></div>
+    </div>
+    <!-- astronaut -->
+    <div class="cos-obj" data-depth="0.28" style="top:58vh;left:-3vw;width:clamp(78px,13vw,140px);opacity:.9">
+      <div class="cos-float"><svg viewBox="0 0 130 150"><defs><linearGradient id="suitA" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#c4cce6"/></linearGradient><radialGradient id="visorA" cx="40%" cy="36%" r="70%"><stop offset="0%" stop-color="#dfe9ff"/><stop offset="55%" stop-color="#8b9cff"/><stop offset="100%" stop-color="#2b2f63"/></radialGradient></defs><path d="M64 96 C 40 120, 26 138, 12 150" fill="none" stroke="#c9b8ff" stroke-width="1.5" opacity=".55" stroke-dasharray="3 4"/><rect x="40" y="44" width="50" height="46" rx="14" fill="#aab2cc"/><rect x="22" y="58" width="26" height="13" rx="6.5" fill="url(#suitA)" transform="rotate(-24 35 64)"/><rect x="82" y="56" width="26" height="13" rx="6.5" fill="url(#suitA)" transform="rotate(20 95 62)"/><rect x="44" y="92" width="14" height="34" rx="7" fill="url(#suitA)" transform="rotate(-12 51 109)"/><rect x="70" y="92" width="14" height="34" rx="7" fill="url(#suitA)" transform="rotate(14 77 109)"/><rect x="38" y="48" width="54" height="50" rx="20" fill="url(#suitA)"/><rect x="54" y="68" width="22" height="14" rx="4" fill="#3a4486" opacity=".8"/><circle cx="59" cy="75" r="2" fill="#7fb2d9"/><circle cx="66" cy="75" r="2" fill="#c9b8ff"/><circle cx="65" cy="34" r="26" fill="url(#suitA)"/><circle cx="65" cy="34" r="18" fill="url(#visorA)"/><ellipse cx="58" cy="28" rx="6" ry="4" fill="#ffffff" opacity=".5"/></svg></div>
+    </div>
+    <!-- satellite -->
+    <div class="cos-obj" data-depth="0.2" style="top:84vh;left:70vw;width:clamp(100px,17vw,195px);opacity:.78">
+      <div class="cos-spin"><svg viewBox="0 0 150 90"><defs><linearGradient id="panelA" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3c63b0"/><stop offset="100%" stop-color="#1d2f63"/></linearGradient></defs><rect x="20" y="43" width="110" height="3" fill="#8b93b5"/><rect x="6" y="30" width="40" height="28" rx="2" fill="url(#panelA)" stroke="#7fb2d9" stroke-width="1"/><line x1="19" y1="30" x2="19" y2="58" stroke="#7fb2d9" stroke-width=".7" opacity=".6"/><line x1="32" y1="30" x2="32" y2="58" stroke="#7fb2d9" stroke-width=".7" opacity=".6"/><line x1="6" y1="44" x2="46" y2="44" stroke="#7fb2d9" stroke-width=".7" opacity=".6"/><rect x="104" y="30" width="40" height="28" rx="2" fill="url(#panelA)" stroke="#7fb2d9" stroke-width="1"/><line x1="117" y1="30" x2="117" y2="58" stroke="#7fb2d9" stroke-width=".7" opacity=".6"/><line x1="130" y1="30" x2="130" y2="58" stroke="#7fb2d9" stroke-width=".7" opacity=".6"/><line x1="104" y1="44" x2="144" y2="44" stroke="#7fb2d9" stroke-width=".7" opacity=".6"/><rect x="58" y="30" width="34" height="30" rx="5" fill="#d3d8ea"/><rect x="64" y="36" width="22" height="18" rx="3" fill="#3a4486"/><ellipse cx="75" cy="20" rx="13" ry="6" fill="#eef1fb" opacity=".9"/><line x1="75" y1="26" x2="75" y2="32" stroke="#8b93b5" stroke-width="2"/></svg></div>
+    </div>
+    <!-- nebula (blue) -->
+    <div class="cos-obj" data-depth="0.06" style="top:104vh;left:38vw;width:clamp(200px,38vw,460px);opacity:.4">
+      <div class="cos-sway"><svg viewBox="0 0 200 200" style="filter:blur(26px)"><defs><radialGradient id="nebB" cx="42%" cy="40%" r="62%"><stop offset="0%" stop-color="#7fb2d9" stop-opacity=".55"/><stop offset="45%" stop-color="#7fb2d9" stop-opacity=".22"/><stop offset="100%" stop-color="#7fb2d9" stop-opacity="0"/></radialGradient></defs><circle cx="100" cy="100" r="100" fill="url(#nebB)"/></svg></div>
+    </div>
+    <!-- spaceship -->
+    <div class="cos-obj" data-depth="0.24" style="top:126vh;left:-5vw;width:clamp(120px,19vw,235px);opacity:.82">
+      <div class="cos-drift"><svg viewBox="0 0 170 80"><defs><linearGradient id="hullA" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#eef1fb"/><stop offset="55%" stop-color="#aeb6d6"/><stop offset="100%" stop-color="#5d6699"/></linearGradient><radialGradient id="flameA" cx="80%" cy="50%" r="60%"><stop offset="0%" stop-color="#cfe6ff"/><stop offset="40%" stop-color="#7fb2d9"/><stop offset="100%" stop-color="#7fb2d9" stop-opacity="0"/></radialGradient></defs><ellipse cx="14" cy="40" rx="22" ry="9" fill="url(#flameA)"/><path d="M58 40 L34 14 L70 30 Z" fill="#6b74a6"/><path d="M58 40 L34 66 L70 50 Z" fill="#545d8c"/><path d="M40 40 Q 95 16 156 40 Q 95 64 40 40 Z" fill="url(#hullA)"/><path d="M120 33 Q 150 40 120 47 Z" fill="#c9b8ff" opacity=".7"/><ellipse cx="96" cy="38" rx="14" ry="7" fill="#2b2f63"/><ellipse cx="92" cy="36" rx="5" ry="2.5" fill="#9fb6ff" opacity=".85"/></svg></div>
+    </div>
+    <!-- crescent moon-planet -->
+    <div class="cos-obj" data-depth="0.2" style="top:150vh;left:72vw;width:clamp(70px,11vw,130px);opacity:.62">
+      <div class="cos-sway"><svg viewBox="0 0 120 120"><defs><radialGradient id="cpA" cx="34%" cy="32%" r="70%"><stop offset="0%" stop-color="#eaf3ff"/><stop offset="55%" stop-color="#c9b8ff"/><stop offset="100%" stop-color="#26406a"/></radialGradient></defs><circle cx="60" cy="60" r="44" fill="url(#cpA)"/><circle cx="76" cy="52" r="44" fill="#070b1c" opacity=".78"/></svg></div>
+    </div>
+  </div>
+</div>
+<!-- comets: viewport-fixed periodic streaks -->
+<div class="cosmic-comets" aria-hidden="true">
+  <div class="cos-obj" style="top:16vh;left:72vw;width:clamp(120px,20vw,260px)"><div class="cos-comet" style="animation-duration:12s;animation-delay:2s"><div style="position:relative;width:100%;height:2px"><div style="position:absolute;left:0;top:-2px;width:6px;height:6px;border-radius:50%;background:#eaf0ff;box-shadow:0 0 8px 2px rgba(201,184,255,.9)"></div><div style="width:100%;height:2px;border-radius:2px;background:linear-gradient(90deg,rgba(234,240,255,.95) 0%,rgba(201,184,255,.5) 30%,rgba(201,184,255,0) 100%)"></div></div></div></div>
+  <div class="cos-obj" style="top:40vh;left:86vw;width:clamp(100px,16vw,220px)"><div class="cos-comet" style="animation-duration:15s;animation-delay:8s"><div style="position:relative;width:100%;height:2px"><div style="position:absolute;left:0;top:-2px;width:6px;height:6px;border-radius:50%;background:#eaf0ff;box-shadow:0 0 8px 2px rgba(201,184,255,.9)"></div><div style="width:100%;height:2px;border-radius:2px;background:linear-gradient(90deg,rgba(234,240,255,.95) 0%,rgba(201,184,255,.5) 30%,rgba(201,184,255,0) 100%)"></div></div></div></div>
+  <div class="cos-obj" style="top:64vh;left:60vw;width:clamp(120px,18vw,240px)"><div class="cos-comet" style="animation-duration:18s;animation-delay:5s"><div style="position:relative;width:100%;height:2px"><div style="position:absolute;left:0;top:-2px;width:6px;height:6px;border-radius:50%;background:#eaf0ff;box-shadow:0 0 8px 2px rgba(201,184,255,.9)"></div><div style="width:100%;height:2px;border-radius:2px;background:linear-gradient(90deg,rgba(234,240,255,.95) 0%,rgba(201,184,255,.5) 30%,rgba(201,184,255,0) 100%)"></div></div></div></div>
+</div>
+<!-- drifting moon (12h wall-clock arc, non-interactive) -->
+<div class="moon moon-glow" id="moon" aria-hidden="true"><span class="crater"></span></div>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 <div class="page">
   <div class="avatar" id="av">🦌</div>
@@ -196,24 +262,60 @@ document.getElementById("hd").textContent = PROFILE.handle;
 document.getElementById("bio").textContent = PROFILE.bio;
 document.title = PROFILE.name + " — Links";
 
-/* nền sao bay — tắt khi prefers-reduced-motion */
+/* ===== Starfield (twinkle + cursor trail) — ported from sleepy-soundscape StarfieldCanvas ===== */
 (function(){
   if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  const c=document.getElementById("stars"), x=c.getContext("2d");
-  const COLORS=["#ffffff","#ffffff","#ffffff","#8B5CF6","#22D3EE"];
-  let w,h,dpr,ps=[];
-  function resize(){ dpr=Math.min(2,window.devicePixelRatio||1); w=c.width=innerWidth*dpr; h=c.height=innerHeight*dpr;
-    c.style.width=innerWidth+"px"; c.style.height=innerHeight+"px";
-    const n=Math.min(150,Math.round(innerWidth*innerHeight/6000)); ps=[];
-    for(let i=0;i<n;i++) ps.push({x:Math.random()*w,y:Math.random()*h,r:(Math.random()*1.6+0.5)*dpr,
-      vx:(Math.random()-0.5)*0.12*dpr,vy:(-Math.random()*0.18-0.04)*dpr,a:Math.random()*0.6+0.2,tw:Math.random()*6.28,col:COLORS[(Math.random()*COLORS.length)|0]});
+  const canvas=document.getElementById("stars"), ctx=canvas.getContext("2d");
+  let w=0,h=0,dpr=1; const stars=[], trail=[];
+  function resize(){ dpr=Math.min(window.devicePixelRatio||1,2); w=innerWidth; h=innerHeight;
+    canvas.width=Math.floor(w*dpr); canvas.height=Math.floor(h*dpr);
+    canvas.style.width=w+"px"; canvas.style.height=h+"px"; ctx.setTransform(dpr,0,0,dpr,0,0);
+    stars.length=0; const count=Math.min(260,Math.floor(w*h/7000));
+    for(let i=0;i<count;i++) stars.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.3+0.2,
+      baseA:Math.random()*0.6+0.2,phase:Math.random()*6.2832,speed:Math.random()*0.5+0.15});
   }
-  function frame(){ x.clearRect(0,0,w,h);
-    for(const p of ps){ p.x+=p.vx; p.y+=p.vy; p.tw+=0.02;
-      if(p.y<-12)p.y=h+12; if(p.x<-12)p.x=w+12; if(p.x>w+12)p.x=-12;
-      x.beginPath(); x.arc(p.x,p.y,p.r,0,6.2832); x.fillStyle=p.col; x.globalAlpha=p.a*(0.55+0.45*Math.sin(p.tw)); x.shadowBlur=6*dpr; x.shadowColor=p.col; x.fill(); }
-    x.globalAlpha=1; x.shadowBlur=0; requestAnimationFrame(frame); }
-  addEventListener("resize",resize); resize(); requestAnimationFrame(frame);
+  resize(); addEventListener("resize",resize);
+  function onMove(e){ trail.push({x:e.clientX,y:e.clientY,life:1}); if(trail.length>70) trail.shift(); }
+  addEventListener("pointermove",onMove,{passive:true}); addEventListener("pointerdown",onMove,{passive:true});
+  let t=0,last=performance.now();
+  function frame(now){ const dt=Math.min(0.05,(now-last)/1000); last=now; t+=dt;
+    ctx.clearRect(0,0,w,h);
+    for(const st of stars){ const tw=0.5+0.5*Math.sin(t*st.speed*2+st.phase); const a=st.baseA*(0.35+0.65*tw);
+      ctx.globalAlpha=a; ctx.fillStyle="#ffffff"; ctx.beginPath(); ctx.arc(st.x,st.y,st.r,0,6.2832); ctx.fill();
+      if(st.r>0.85){ ctx.globalAlpha=a*0.25; ctx.beginPath(); ctx.arc(st.x,st.y,st.r*3.2,0,6.2832); ctx.fill(); } }
+    ctx.globalAlpha=1;
+    for(let i=0;i<trail.length;i++){ const p=trail[i]; p.life-=dt*1.1; if(p.life<=0) continue; const a=p.life*0.5;
+      const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,22); g.addColorStop(0,"rgba(201,184,255,"+a+")");
+      g.addColorStop(0.5,"rgba(160,170,255,"+(a*0.4)+")"); g.addColorStop(1,"rgba(201,184,255,0)");
+      ctx.fillStyle=g; ctx.beginPath(); ctx.arc(p.x,p.y,22,0,6.2832); ctx.fill(); }
+    while(trail.length && trail[0].life<=0) trail.shift();
+    requestAnimationFrame(frame); }
+  requestAnimationFrame(frame);
+})();
+
+/* ===== Cosmic parallax — shift each mascot by its distance from viewport centre × depth ===== */
+(function(){
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const layer=document.querySelector(".cosmic-parallax"); if(!layer) return;
+  const els=Array.from(layer.querySelectorAll("[data-depth]"));
+  let items=[];
+  const measure=()=>{ items=els.map(el=>({el,depth:+el.dataset.depth||0,center:el.offsetTop+el.offsetHeight/2})); };
+  let ticking=false;
+  const update=()=>{ const mid=scrollY+innerHeight/2; for(const it of items){ const d=mid-it.center;
+    it.el.style.transform="translate3d(0,"+(d*it.depth).toFixed(1)+"px,0)"; } ticking=false; };
+  const onScroll=()=>{ if(!ticking){ ticking=true; requestAnimationFrame(update); } };
+  measure(); update();
+  addEventListener("scroll",onScroll,{passive:true});
+  addEventListener("resize",()=>{ measure(); update(); });
+})();
+
+/* ===== Drifting moon — traces a gentle arc on a real 12-hour wall-clock pace (visual only) ===== */
+(function(){
+  const moon=document.getElementById("moon"); if(!moon) return;
+  function update(){ const p=((((Date.now()/1000/3600)%12)+12)%12)/12;   // 0..1
+    const x=6+p*88, y=62-Math.sin(p*Math.PI)*46;                          // arc: peak ~16% from top
+    moon.style.left=x+"%"; moon.style.top=y+"%"; }
+  update(); setInterval(update,1000);
 })();
 </script>
 <script data-goatcounter="https://60s-congnghe.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
