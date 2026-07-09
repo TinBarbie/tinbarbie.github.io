@@ -96,14 +96,6 @@
   .cos-obj{position:absolute;will-change:transform}
   .cos-obj svg{width:100%;height:auto;display:block}
   .cosmic-comets{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-  .moon{position:fixed;left:50%;top:20%;width:clamp(46px,7vw,70px);height:clamp(46px,7vw,70px);
-    border-radius:50%;transform:translate(-50%,-50%);z-index:0;pointer-events:none;
-    background:radial-gradient(circle at 34% 30%,#fffdf6 0%,#f5f0e0 42%,#e4dcc4 68%,#c4bca0 100%)}
-  .moon .crater{position:absolute;inset:0;border-radius:50%;opacity:.5;
-    background:radial-gradient(circle at 72% 64%,rgba(120,110,90,.25) 0 9%,transparent 10%),
-      radial-gradient(circle at 40% 70%,rgba(120,110,90,.18) 0 6%,transparent 7%),
-      radial-gradient(circle at 58% 38%,rgba(120,110,90,.14) 0 5%,transparent 6%)}
-  .moon-glow{box-shadow:0 0 24px 6px rgba(245,240,224,.28),0 0 80px 24px rgba(245,240,224,.12),0 0 160px 60px rgba(160,170,255,.06)}
   @keyframes cos-float{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-14px) rotate(3deg)}}
   .cos-float{animation:cos-float 7s ease-in-out infinite}
   @keyframes cos-drift{0%{transform:translateX(-14px)}100%{transform:translateX(14px)}}
@@ -161,8 +153,6 @@
   <div class="cos-obj" style="top:40vh;left:86vw;width:clamp(100px,16vw,220px)"><div class="cos-comet" style="animation-duration:15s;animation-delay:8s"><div style="position:relative;width:100%;height:2px"><div style="position:absolute;left:0;top:-2px;width:6px;height:6px;border-radius:50%;background:#eaf0ff;box-shadow:0 0 8px 2px rgba(201,184,255,.9)"></div><div style="width:100%;height:2px;border-radius:2px;background:linear-gradient(90deg,rgba(234,240,255,.95) 0%,rgba(201,184,255,.5) 30%,rgba(201,184,255,0) 100%)"></div></div></div></div>
   <div class="cos-obj" style="top:64vh;left:60vw;width:clamp(120px,18vw,240px)"><div class="cos-comet" style="animation-duration:18s;animation-delay:5s"><div style="position:relative;width:100%;height:2px"><div style="position:absolute;left:0;top:-2px;width:6px;height:6px;border-radius:50%;background:#eaf0ff;box-shadow:0 0 8px 2px rgba(201,184,255,.9)"></div><div style="width:100%;height:2px;border-radius:2px;background:linear-gradient(90deg,rgba(234,240,255,.95) 0%,rgba(201,184,255,.5) 30%,rgba(201,184,255,0) 100%)"></div></div></div></div>
 </div>
-<!-- drifting moon (12h wall-clock arc, non-interactive) -->
-<div class="moon moon-glow" id="moon" aria-hidden="true"><span class="crater"></span></div>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 <div class="page">
   <div class="avatar" id="av">🦌</div>
@@ -323,15 +313,6 @@ document.title = PROFILE.name + " — Links";
   measure(); update();
   addEventListener("scroll",onScroll,{passive:true});
   addEventListener("resize",()=>{ measure(); update(); });
-})();
-
-/* ===== Drifting moon — traces a gentle arc on a real 12-hour wall-clock pace (visual only) ===== */
-(function(){
-  const moon=document.getElementById("moon"); if(!moon) return;
-  function update(){ const p=((((Date.now()/1000/3600)%12)+12)%12)/12;   // 0..1
-    const x=6+p*88, y=62-Math.sin(p*Math.PI)*46;                          // arc: peak ~16% from top
-    moon.style.left=x+"%"; moon.style.top=y+"%"; }
-  update(); setInterval(update,1000);
 })();
 </script>
 <script data-goatcounter="https://60s-congnghe.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
