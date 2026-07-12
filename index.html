@@ -19,7 +19,7 @@
 <style>
   :root{
     --bg:#050816; --card:#141627; --card2:#171a2e; --ink:#eef1ff; --dim:#9aa3c7;
-    --line:#262a45; --a1:#8B5CF6; --a2:#22D3EE;
+    --line:#262a45; --a1:#8B5CF6; --a2:#22D3EE; --kalo:#0EA5A4;
   }
   *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
   body{background:
@@ -82,6 +82,16 @@
   a.pcard.mine.star{box-shadow:0 0 0 1px #c9b8ff55,0 12px 36px #c9b8ff22}
   a.pcard.mine .pcta{background:#c9b8ff}
   a.pcard.mine .pwhy{-webkit-line-clamp:3}
+  /* partner / sponsored featured card (Kalodata campaign) */
+  a.pcard.kalo{border-color:var(--kalo)}
+  a.pcard.kalo.star{box-shadow:0 0 0 1px #0ea5a455,0 12px 36px #0ea5a42a}
+  a.pcard.kalo .pimg{background:radial-gradient(120% 120% at 30% 20%,#0f3f3b,#0a1f1e)}
+  a.pcard.kalo .pcta{background:var(--kalo);color:#eafffb}
+  a.pcard.kalo .pwhy{-webkit-line-clamp:3}
+  .pill.partner{color:#04201c;background:var(--kalo)}
+  .kcode{align-self:flex-start;margin-top:4px;font-size:12.5px;font-weight:800;letter-spacing:.03em;
+    color:#04201c;background:#5eead4;border-radius:9px;padding:6px 11px;box-shadow:0 0 18px #5eead455}
+  .knote{align-self:flex-start;margin-top:8px;font-size:12px;font-weight:600;color:#5eead4}
   .disc{font-size:11.5px;color:#cfd5ff;text-align:center;line-height:1.55;margin:20px 8px 8px;
     border-top:1px solid var(--line);padding-top:16px;width:100%}
   .foot{font-size:11px;color:#cfd5ff;margin-top:10px}
@@ -196,11 +206,38 @@ const PRODUCTS = [
 ];
 const CONTACT = { section:"Hợp tác", icon:"🤝", label:"Hợp tác / tài trợ", sub:"liên hệ làm video", url:"mailto:baotin22071998@gmail.com" };
 
+/* PARTNER (tài trợ) — card nổi bật ở ĐẦU trang trong lúc campaign. Đổi active:false khi hết campaign để gỡ.
+   ⚠️ url: hiện để kalodata.com — THAY bằng Tcode/link tracking Kalodata gửi để ghi nhận hoa hồng cho mình. */
+const KALODATA = {
+  active: true,
+  name:  "Kalodata — phân tích TikTok Shop",
+  why:   "Soi sản phẩm đang ra đơn, xem đối thủ, và hỏi dữ liệu bằng tiếng Việt. Số liệu là ước tính tham khảo.",
+  code:  "60SCNCT",
+  discount: "10%",
+  price: "Có bản dùng thử",
+  url:   "https://www.kalodata.com/"
+};
+
 const slug = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ đ]/g, m => m==="đ"?"d":"")
   .replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
 const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const wrap = document.getElementById("links");
 let html = "";
+
+// PARTNER featured card — top of page during campaign
+if (KALODATA && KALODATA.active) {
+  html += `<div class="seg">🤝 Đang hợp tác<span class="note">Ưu đãi cho người xem kênh — mã riêng của mình.</span></div>`;
+  html += `<a class="pcard kalo star" href="${KALODATA.url}" target="_blank" rel="noopener sponsored" data-track="kalodata-partner">
+    <span class="pimg"><span aria-hidden="true">📊</span></span>
+    <span class="pbody">
+      <span class="ptop"><span class="pill partner">ĐANG HỢP TÁC</span></span>
+      <span class="pname">${esc(KALODATA.name)}</span>
+      <span class="pwhy">${esc(KALODATA.why)}</span>
+      <span class="knote">💡 Nhớ nhập mã bên dưới để được giảm nhé</span>
+      <span class="kcode">MÃ ${esc(KALODATA.code)} · giảm ${esc(KALODATA.discount)}</span>
+      <span class="prow"><span class="price" style="color:#5eead4">${esc(KALODATA.price)}</span><span class="pcta">Dùng thử ›</span></span>
+    </span></a>`;
+}
 
 LINKS.forEach(l=>{
   if(l.section) html += `<div class="seg">${l.section}</div>`;
