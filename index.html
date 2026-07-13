@@ -193,7 +193,7 @@ const PROFILE = {
   bio:    "Mỗi ngày 1 repo GitHub hay ho 🔥 — cho dev · gamer · người học AI. Tool & đồ nghề mình thật sự dùng ở dưới 👇"
 };
 const LINKS = [
-  { section:"Theo dõi mình", icon:"🎵", label:"TikTok", sub:"@60s.cong.nghe.cung.tin", url:"https://www.tiktok.com/@60s.cong.nghe.cung.tin", primary:true },
+  { section:"Theo dõi mình trên các nền tảng", icon:"🎵", label:"TikTok", sub:"@60s.cong.nghe.cung.tin", url:"https://www.tiktok.com/@60s.cong.nghe.cung.tin", primary:true },
   { icon:"📘", label:"Facebook", sub:"theo dõi thêm trên Facebook", url:"https://www.facebook.com/profile.php?id=61581490000312" },
   { icon:"📸", label:"Instagram", sub:"@60s_cong_nghe_cung_tin", url:"https://www.instagram.com/60s_cong_nghe_cung_tin/" },
   { icon:"▶️", label:"YouTube", sub:"kênh YouTube của mình", url:"https://www.youtube.com/@60sC%C3%B4ngNgh%E1%BB%87c%C3%B9ngT%C3%ADn" },
@@ -240,12 +240,7 @@ if (KALODATA && KALODATA.active) {
     </span></a>`;
 }
 
-LINKS.forEach(l=>{
-  if(l.section) html += `<div class="seg">${l.section}</div>`;
-  const sub = l.sub ? `<span class="sub">${esc(l.sub)}</span>` : "";
-  html += `<a class="btn ${l.primary?'primary':''}" href="${l.url}" target="_blank" rel="noopener nofollow" data-track="${slug(l.label)}">
-    <span class="ic" aria-hidden="true">${l.icon}</span><span class="tx"><span class="lbl">${esc(l.label)}</span>${sub}</span><span class="chev" aria-hidden="true">›</span></a>`;
-});
+// (social platforms rendered below, after the tools block)
 
 html += `<div class="seg">🛠️ Đồ nghề & tool mình thật sự dùng<span class="note">Đúng món mình dùng để làm mấy video bạn xem. Link affiliate — ủng hộ kênh nha 🙏</span></div>`;
 PRODUCTS.forEach(p=>{
@@ -259,6 +254,14 @@ PRODUCTS.forEach(p=>{
       <span class="pwhy">${esc(p.why)}</span>
       <span class="prow"><span class="price">${esc(p.price||"Xem giá")}</span><span class="pcta">Xem ngay ›</span></span>
     </span></a>`;
+});
+
+// social platforms — after the tools block
+LINKS.forEach(l=>{
+  if(l.section) html += `<div class="seg">${l.section}</div>`;
+  const sub = l.sub ? `<span class="sub">${esc(l.sub)}</span>` : "";
+  html += `<a class="btn ${l.primary?'primary':''}" href="${l.url}" target="_blank" rel="noopener nofollow" data-track="${slug(l.label)}">
+    <span class="ic" aria-hidden="true">${l.icon}</span><span class="tx"><span class="lbl">${esc(l.label)}</span>${sub}</span><span class="chev" aria-hidden="true">›</span></a>`;
 });
 
 html += `<div class="seg">${CONTACT.section}</div>`;
