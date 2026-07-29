@@ -81,6 +81,28 @@
   a.pcard.mine.star{box-shadow:0 0 0 1px #c9b8ff55,0 12px 36px #c9b8ff22}
   a.pcard.mine .pcta{background:#c9b8ff}
   a.pcard.mine .pwhy{-webkit-line-clamp:3}
+  /* ===== VPSTTT featured partner block (top of page) ===== */
+  a.vps{width:100%;display:block;text-decoration:none;color:var(--ink);position:relative;overflow:hidden;
+    background:linear-gradient(150deg,rgba(34,211,238,.13),rgba(236,72,153,.10) 70%),var(--card);
+    border:1px solid rgba(34,211,238,.42);border-radius:20px;padding:20px 20px 18px;margin:4px 0 6px;
+    box-shadow:0 0 0 1px rgba(34,211,238,.18),0 16px 44px rgba(34,211,238,.18);
+    transition:transform .18s ease, box-shadow .18s ease}
+  a.vps:hover{transform:translateY(-2px);box-shadow:0 0 0 1px rgba(34,211,238,.32),0 20px 54px rgba(34,211,238,.26)}
+  a.vps:focus-visible{outline:none;box-shadow:0 0 0 3px var(--a2),0 0 0 6px #ec489944}
+  .vps-badge{position:absolute;top:14px;right:14px;font-size:9px;font-weight:800;letter-spacing:.08em;
+    color:#0a0b12;background:var(--a2);border-radius:999px;padding:3px 9px}
+  .vps-mark{font-size:26px;font-weight:900;letter-spacing:.02em;color:var(--a2)}
+  .vps-mark span{color:#ec4899}
+  .vps-tag{font-size:12.5px;color:#c7d0ff;font-weight:600;margin-top:4px;line-height:1.4}
+  .vps-code{display:flex;align-items:center;gap:12px;margin-top:15px;background:#0a0e1e;
+    border:1px dashed rgba(34,211,238,.5);border-radius:13px;padding:12px 14px}
+  .vps-code .lab{font-size:10px;font-weight:800;letter-spacing:.14em;color:#8ea0c9;text-transform:uppercase}
+  .vps-code .val{font-size:22px;font-weight:900;letter-spacing:.06em;color:var(--a2);font-family:"SF Mono",ui-monospace,Menlo,monospace}
+  .vps-copy{margin-left:auto;flex:0 0 auto;font-size:12px;font-weight:800;color:#04201c;background:var(--a2);
+    border:none;border-radius:10px;padding:9px 14px;cursor:pointer}
+  .vps-cta{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;
+    background:var(--a2);color:#04201c;font-size:15px;font-weight:900;border-radius:13px;padding:14px}
+  .vps-disc{font-size:10.5px;color:#8089ad;text-align:center;margin-top:10px}
   .disc{font-size:11.5px;color:#cfd5ff;text-align:center;line-height:1.55;margin:20px 8px 8px;
     border-top:1px solid var(--line);padding-top:16px;width:100%}
   .foot{font-size:11px;color:#cfd5ff;margin-top:10px}
@@ -202,6 +224,17 @@ const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'
 const wrap = document.getElementById("links");
 let html = "";
 
+// ===== VPSTTT featured block — TOP of page =====
+const VPS = { url:"https://order.vpsttt.com/dangky?helo9532", code:"helo9532" };
+html += `<a class="vps" href="${VPS.url}" target="_blank" rel="noopener nofollow sponsored" data-track="vpsttt-aff">
+  <span class="vps-badge">ĐỐI TÁC</span>
+  <span class="vps-mark">VPS<span>TTT</span></span>
+  <span class="vps-tag">VPS · Proxy · Hosting · Lưu trữ · Máy chủ · Mạng · Bảo mật. Nhập mã lúc đăng ký để nhận ưu đãi.</span>
+  <span class="vps-code"><span class="lab">Mã giới thiệu</span><span class="val">${VPS.code}</span><button type="button" class="vps-copy" data-copy="${VPS.code}">Sao chép</button></span>
+  <span class="vps-cta">Đăng ký VPSTTT ›</span>
+  <span class="vps-disc">Có hợp tác với VPSTTT</span>
+</a>`;
+
 // (social platforms rendered below, after the tools block)
 
 html += `<div class="seg">🛠️ Đồ nghề & tool mình thật sự dùng<span class="note">Đúng món mình dùng để làm mấy video bạn xem. Link affiliate — ủng hộ kênh nha 🙏</span></div>`;
@@ -244,6 +277,15 @@ html += `<a class="pcard mine star" href="https://sleepy-soundscape-z-ai.vercel.
 wrap.innerHTML = html;
 
 document.addEventListener("click", e => {
+  const cp = e.target.closest("[data-copy]");
+  if (cp) {
+    e.preventDefault(); e.stopPropagation();
+    const code = cp.getAttribute("data-copy");
+    const ok = () => showToast("📋 Đã sao chép mã " + code);
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(code).then(ok).catch(() => fallbackCopy(code, ok));
+    else fallbackCopy(code, ok);
+    return;
+  }
   const a = e.target.closest("a[data-track]");
   if(!a) return;
   const name = a.getAttribute("data-track");
