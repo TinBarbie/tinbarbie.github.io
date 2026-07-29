@@ -47,6 +47,11 @@
   a.btn:hover{transform:translateY(-2px);background:var(--card2);border-color:#3a3f6b}
   a.btn:active{transform:scale(.985)}
   a.btn.primary{border-color:var(--a1);box-shadow:0 0 0 1px #8b5cf655, 0 10px 34px #8b5cf526}
+  a.btn.svc{border-color:#34D399;background:linear-gradient(150deg,rgba(52,211,153,.12),transparent 72%),var(--card);
+    box-shadow:0 0 0 1px rgba(52,211,153,.34),0 12px 34px rgba(52,211,153,.16)}
+  a.btn.svc:hover{border-color:#34D399;background:linear-gradient(150deg,rgba(52,211,153,.18),transparent 72%),var(--card2)}
+  a.btn.svc .lbl{color:#8af0c8}
+  a.btn.svc .chev{color:#34D399}
   a.btn:focus-visible,a.pcard:focus-visible{outline:none;box-shadow:0 0 0 3px var(--a2),0 0 0 6px #22d3ee44}
   .ic{flex:0 0 44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:23px;
     background:#ffffff0d;border:1px solid var(--line)}
@@ -260,6 +265,8 @@ LINKS.forEach(l=>{
 html += `<div class="seg">${CONTACT.section}</div>`;
 html += `<a class="btn" href="${CONTACT.url}" data-email="${CONTACT.url.slice(7)}" data-track="${slug(CONTACT.label)}">
   <span class="ic" aria-hidden="true">${CONTACT.icon}</span><span class="tx"><span class="lbl">${esc(CONTACT.label)}</span><span class="sub">${esc(CONTACT.sub)}</span></span><span class="chev" aria-hidden="true">›</span></a>`;
+html += `<a class="btn svc" href="https://docs.google.com/forms/d/e/1FAIpQLSe7LX72KT3DPH8VHcFaDJaVZNo5zGemp1810Gw37pw8IP40gw/viewform" target="_blank" rel="noopener" data-track="chatbot-service">
+  <span class="ic" aria-hidden="true">🤖</span><span class="tx"><span class="lbl">Nhận làm Chatbot AI (web / Zalo OA)</span><span class="sub">Tự trả lời, chốt đơn, chăm khách 24/7. Điền form nhận tư vấn & báo giá.</span></span><span class="chev" aria-hidden="true">›</span></a>`;
 
 // Web nhỏ mình vibe code — chia sẻ cho audience (không phải affiliate)
 html += `<div class="seg">🌙 Web nhỏ mình vibe code<span class="note">Làm cho vui & chia sẻ — chưa thương mại hoá. Bạn dùng thấy hay thì mình sẽ phát triển tiếp 💜</span></div>`;
