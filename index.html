@@ -110,6 +110,15 @@
   .vps-cta{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;
     background:var(--a2);color:#04201c;font-size:15px;font-weight:900;border-radius:13px;padding:14px}
   .vps-disc{font-size:10.5px;color:#8089ad;text-align:center;margin-top:10px}
+  /* ===== vexetot featured block (green variant of .vps, sits right after VPSTTT) ===== */
+  a.vps.vxt{background:linear-gradient(150deg,rgba(34,197,94,.14),rgba(249,115,22,.09) 70%),var(--card);
+    border-color:rgba(34,197,94,.42);box-shadow:0 0 0 1px rgba(34,197,94,.18),0 16px 44px rgba(34,197,94,.18)}
+  a.vps.vxt:hover{box-shadow:0 0 0 1px rgba(34,197,94,.32),0 20px 54px rgba(34,197,94,.26)}
+  a.vps.vxt:focus-visible{box-shadow:0 0 0 3px #22C55E,0 0 0 6px #F9731644}
+  .vxt .vps-badge{background:#22C55E}
+  .vxt .vps-mark{color:#22C55E}
+  .vxt .vps-mark span{color:#F97316}
+  .vxt .vps-cta{background:#22C55E;color:#04210f}
   .disc{font-size:11.5px;color:#cfd5ff;text-align:center;line-height:1.55;margin:20px 8px 8px;
     border-top:1px solid var(--line);padding-top:16px;width:100%}
   .foot{font-size:11px;color:#cfd5ff;margin-top:10px}
@@ -238,6 +247,15 @@ html += `<a class="vps" href="${VPS.url}" target="_blank" rel="noopener nofollow
   <span class="vps-tag">VPS · Proxy · Hosting · Lưu trữ · Máy chủ · Mạng · Bảo mật. Nhập mã lúc đăng ký để nhận ưu đãi.</span>
   <span class="vps-code"><span class="lab">Mã giới thiệu</span><span class="val">${VPS.code}</span><button type="button" class="vps-copy" data-copy="${VPS.code}">Sao chép</button></span>
   <span class="vps-cta">Đăng ký VPSTTT ›</span>
+</a>`;
+
+// ===== vexetot featured block — right after VPSTTT =====
+const VXT = { url:"https://vexetot.com?ref=8YZFGWLB" };
+html += `<a class="vps vxt" href="${VXT.url}" target="_blank" rel="noopener nofollow" data-track="vexetot-aff">
+  <span class="vps-badge">ĐẶT VÉ XE</span>
+  <span class="vps-mark">🚌 Vé Xe <span>Tốt</span></span>
+  <span class="vps-tag">Đặt vé xe khách online: so giá nhà xe, chọn chỗ, đặt trước khỏi ra bến. Đặt qua đây là ủng hộ mình nha.</span>
+  <span class="vps-cta">Đặt vé xe ngay ›</span>
 </a>`;
 
 // (social platforms rendered below, after the tools block)
