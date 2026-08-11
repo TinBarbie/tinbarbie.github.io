@@ -28,7 +28,7 @@
     color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
     min-height:100vh; position:relative; display:flex; justify-content:center; padding:34px 18px calc(48px + env(safe-area-inset-bottom))}
   #stars{position:fixed; inset:0; width:100%; height:100%; z-index:0; pointer-events:none}
-  .page{width:100%; max-width:460px; display:flex; flex-direction:column; align-items:center; position:relative; z-index:1}
+  .page{width:100%; max-width:1080px; display:flex; flex-direction:column; align-items:center; position:relative; z-index:1}
   .avatar{width:104px;height:104px;border-radius:50%;display:grid;place-items:center;font-size:50px;overflow:hidden;
     background:linear-gradient(145deg,var(--a1),var(--a2));box-shadow:0 0 0 4px #ffffff10,0 14px 40px #8b5cf655;margin-bottom:14px}
   .avatar img{width:100%;height:100%;object-fit:cover}
@@ -156,6 +156,12 @@
     *{transition:none !important;animation:none !important}
     #stars,.cosmic-comets{display:none}
   }
+  /* ===== Responsive: items flow into columns by screen size (mobile 1 · tablet 2 · desktop 3) ===== */
+  #links{display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%,300px),1fr)); gap:14px; align-items:start}
+  #links > .seg{grid-column:1 / -1; align-self:start; margin:16px 4px 2px}
+  #links > a{margin:0}
+  .bio{max-width:560px}
+  .disc{max-width:700px; margin-left:auto; margin-right:auto}
 </style>
 </head>
 <body>
