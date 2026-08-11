@@ -165,6 +165,8 @@
   #links > a.vps .vps-cta{margin-top:auto}
   #links > a.pcard .pbody{flex:1; justify-content:flex-start}
   #links > a.pcard .prow{margin-top:auto}
+  #links > a.pcard .pimg{align-self:center}   /* ảnh căn giữa dọc, hết khoảng trống dưới */
+  #links > a.pcard .price{white-space:nowrap}  /* giá 1 dòng, CTA thẳng hàng */
   .bio{max-width:560px}
   .disc{max-width:700px; margin-left:auto; margin-right:auto}
 </style>
@@ -243,11 +245,11 @@ const PROFILE = {
 const LINKS = [];
 const PRODUCTS = [
   { img:"img/elevenlabs.png", name:"ElevenLabs — giọng AI mình lồng tiếng video", why:"Cái mình dùng để tạo voiceover cho mọi video. Có bản miễn phí để thử.", price:"Có bản FREE", url:"https://try.elevenlabs.io/61mv3aj67c86", best:true },
-  { img:"img/books-ai.png", name:"Sách AI mình gối đầu", why:"Bộ sách mình đọc đi đọc lại để hiểu AI từ gốc. Có trên Shopee.", price:"Xem trên Shopee", url:"https://s.shopee.vn/2qTgMngzCf" },
-  { img:"img/headphone.png", name:"Tai nghe không dây mình dùng", why:"Bluetooth 5.3, nghe nhạc · họp · dựng video cả ngày. Giá mềm trên Shopee.", price:"Xem trên Shopee", url:"https://s.shopee.vn/1122Aj144o" },
-  { img:"img/monitor-shelf.png", name:"Kệ màn hình gỗ (4 cổng USB)", why:"Gỗ chất lượng cao, kê màn cao ráo gọn bàn, tích hợp 4 cổng USB tiện cắm. Có trên Shopee.", price:"Xem trên Shopee", url:"https://s.shopee.vn/40fdmAyusL" },
-  { img:"img/aiwa-monitor.png", name:"Màn hình cong gaming AIWA MZ27G-Y", why:"27 inch cong 1500R · 2K · 165Hz · VA · 1ms · G-Sync/FreeSync. Chơi game mượt, giá tốt trên Shopee.", price:"Xem trên Shopee", url:"https://s.shopee.vn/40fdmPsEqU" },
-  { img:"img/furycube-kb.png", name:"Bàn phím cơ FURYCUBE IP75 RGB", why:"Có dây, layout 75% · keycap PBT · núm xoay · RGB. Gõ code & gaming đã tay. Có trên Shopee.", price:"Xem trên Shopee", url:"https://s.shopee.vn/qic12CZDt" },
+  { img:"img/books-ai.png", name:"Sách AI mình gối đầu", why:"Bộ sách mình đọc đi đọc lại để hiểu AI từ gốc. Có trên Shopee.", price:"Shopee", url:"https://s.shopee.vn/2qTgMngzCf" },
+  { img:"img/headphone.png", name:"Tai nghe không dây mình dùng", why:"Bluetooth 5.3, nghe nhạc · họp · dựng video cả ngày. Giá mềm trên Shopee.", price:"Shopee", url:"https://s.shopee.vn/1122Aj144o" },
+  { img:"img/monitor-shelf.png", name:"Kệ màn hình gỗ (4 cổng USB)", why:"Gỗ chất lượng cao, kê màn cao ráo gọn bàn, tích hợp 4 cổng USB tiện cắm. Có trên Shopee.", price:"Shopee", url:"https://s.shopee.vn/40fdmAyusL" },
+  { img:"img/aiwa-monitor.png", name:"Màn hình cong gaming AIWA MZ27G-Y", why:"27 inch cong 1500R · 2K · 165Hz · VA · 1ms · G-Sync/FreeSync. Chơi game mượt, giá tốt trên Shopee.", price:"Shopee", url:"https://s.shopee.vn/40fdmPsEqU" },
+  { img:"img/furycube-kb.png", name:"Bàn phím cơ FURYCUBE IP75 RGB", why:"Có dây, layout 75% · keycap PBT · núm xoay · RGB. Gõ code & gaming đã tay. Có trên Shopee.", price:"Shopee", url:"https://s.shopee.vn/qic12CZDt" },
 ];
 const CONTACT = { section:"Hợp tác", icon:"🤝", label:"Hợp tác / tài trợ", sub:"liên hệ làm video", url:"mailto:baotin22071998@gmail.com" };
 
