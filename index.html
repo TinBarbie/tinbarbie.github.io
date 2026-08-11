@@ -70,7 +70,7 @@
     padding:14px;margin-bottom:12px;position:relative;transition:transform .12s ease,border-color .12s ease,box-shadow .12s ease;touch-action:manipulation}
   a.pcard:hover{transform:translateY(-2px);border-color:#3a3f6b}
   a.pcard.star{border-color:var(--a1);box-shadow:0 0 0 1px #8b5cf655,0 12px 36px #8b5cf522}
-  .pimg{flex:0 0 76px;height:76px;border-radius:14px;display:grid;place-items:center;font-size:38px;overflow:hidden;
+  .pimg{flex:0 0 100px;height:100px;border-radius:14px;display:grid;place-items:center;font-size:38px;overflow:hidden;
     background:radial-gradient(120% 120% at 30% 20%,#2a2f55,#11132a);border:1px solid var(--line)}
   .pimg img{width:100%;height:100%;object-fit:cover}
   .pbody{display:flex;flex-direction:column;min-width:0;flex:1;gap:3px}
@@ -233,9 +233,7 @@ const LINKS = [];
 const PRODUCTS = [
   { emoji:"🎙️", name:"ElevenLabs — giọng AI mình lồng tiếng video", why:"Cái mình dùng để tạo voiceover cho mọi video. Có bản miễn phí để thử.", price:"Có bản FREE", url:"https://try.elevenlabs.io/61mv3aj67c86", best:true },
   { emoji:"📚", name:"Sách AI mình gối đầu", why:"Cuốn mình đọc đi đọc lại để hiểu AI từ gốc.", price:"Xem giá", url:"https://vt.tiktok.com/ZS96JHPu2jLJy-FKXZC/" },
-  { emoji:"🖱️", name:"Chuột mình dùng hằng ngày", why:"Daily driver — dựng video, code cả ngày.", price:"Xem giá", url:"https://vt.tiktok.com/ZS96JHG4LNHfS-Rej69/" },
-  { emoji:"⌨️", name:"Bàn phím mình gõ", why:"Gõ cả ngày không mỏi tay.", price:"Xem giá", url:"https://vt.tiktok.com/ZS96J9mc2b84S-pryON/" },
-  { emoji:"🖥️", name:"Màn hình mình nhìn mỗi ngày", why:"Dựng video & code rõ nét, đỡ mỏi mắt.", price:"Xem giá", url:"https://vt.tiktok.com/ZS9MnpKMDYbYk-F3ztK/" },
+  { img:"img/headphone.png", name:"Tai nghe không dây mình dùng", why:"Bluetooth 5.3, nghe nhạc · họp · dựng video cả ngày. Giá mềm trên Shopee.", price:"Xem trên Shopee", url:"https://s.shopee.vn/1122Aj144o" },
 ];
 const CONTACT = { section:"Hợp tác", icon:"🤝", label:"Hợp tác / tài trợ", sub:"liên hệ làm video", url:"mailto:baotin22071998@gmail.com" };
 
@@ -274,7 +272,7 @@ html += `<a class="vps ig" href="${IG.url}" target="_blank" rel="noopener nofoll
 
 html += `<div class="seg">🛠️ Đồ nghề & tool mình thật sự dùng<span class="note">Đúng món mình dùng để làm mấy video bạn xem. Link affiliate — ủng hộ kênh nha 🙏</span></div>`;
 PRODUCTS.forEach(p=>{
-  const img = p.img ? `<img src="${p.img}" alt="${esc(p.name)}" width="76" height="76">` : `<span aria-hidden="true">${p.emoji||"🔗"}</span>`;
+  const img = p.img ? `<img src="${p.img}" alt="${esc(p.name)}" width="100" height="100">` : `<span aria-hidden="true">${p.emoji||"🔗"}</span>`;
   const pills = `${p.best?'<span class="pill best">ĐÁNG TIỀN NHẤT</span>':''}<span class="pill aff">AFFILIATE</span>`;
   html += `<a class="pcard ${p.best?'star':''}" href="${p.url}" target="_blank" rel="noopener nofollow sponsored" data-track="${slug(p.name)}-aff">
     <span class="pimg">${img}</span>
