@@ -157,9 +157,14 @@
     #stars,.cosmic-comets{display:none}
   }
   /* ===== Responsive: items flow into columns by screen size (mobile 1 · tablet 2 · desktop 3) ===== */
-  #links{display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%,300px),1fr)); gap:14px; align-items:start}
+  #links{display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%,300px),1fr)); gap:14px; align-items:stretch}
   #links > .seg{grid-column:1 / -1; align-self:start; margin:16px 4px 2px}
-  #links > a{margin:0}
+  #links > a{margin:0; height:100%}
+  /* equal heights across a row + CTA pinned to bottom (pcard keeps its horizontal img+body layout) */
+  #links > a.vps{display:flex; flex-direction:column}
+  #links > a.vps .vps-cta{margin-top:auto}
+  #links > a.pcard .pbody{flex:1; justify-content:flex-start}
+  #links > a.pcard .prow{margin-top:auto}
   .bio{max-width:560px}
   .disc{max-width:700px; margin-left:auto; margin-right:auto}
 </style>
