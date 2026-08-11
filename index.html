@@ -236,6 +236,7 @@ const PRODUCTS = [
   { img:"img/headphone.png", name:"Tai nghe không dây mình dùng", why:"Bluetooth 5.3, nghe nhạc · họp · dựng video cả ngày. Giá mềm trên Shopee.", price:"Xem trên Shopee", url:"https://s.shopee.vn/1122Aj144o" },
   { img:"img/monitor-shelf.png", name:"Kệ màn hình gỗ (4 cổng USB)", why:"Gỗ chất lượng cao, kê màn cao ráo gọn bàn, tích hợp 4 cổng USB tiện cắm. Có trên Shopee.", price:"Xem trên Shopee", url:"https://s.shopee.vn/40fdmAyusL" },
   { img:"img/aiwa-monitor.png", name:"Màn hình cong gaming AIWA MZ27G-Y", why:"27 inch cong 1500R · 2K · 165Hz · VA · 1ms · G-Sync/FreeSync. Chơi game mượt, giá tốt trên Shopee.", price:"Xem trên Shopee", url:"https://s.shopee.vn/40fdmPsEqU" },
+  { img:"img/furycube-kb.png", name:"Bàn phím cơ FURYCUBE IP75 RGB", why:"Có dây, layout 75% · keycap PBT · núm xoay · RGB. Gõ code & gaming đã tay. Có trên Shopee.", price:"Xem trên Shopee", url:"https://s.shopee.vn/qic12CZDt" },
 ];
 const CONTACT = { section:"Hợp tác", icon:"🤝", label:"Hợp tác / tài trợ", sub:"liên hệ làm video", url:"mailto:baotin22071998@gmail.com" };
 
@@ -275,7 +276,7 @@ html += `<a class="vps ig" href="${IG.url}" target="_blank" rel="noopener nofoll
 html += `<div class="seg">🛠️ Đồ nghề & tool mình thật sự dùng<span class="note">Đúng món mình dùng để làm mấy video bạn xem. Link affiliate — ủng hộ kênh nha 🙏</span></div>`;
 PRODUCTS.forEach(p=>{
   const img = p.img ? `<img src="${p.img}" alt="${esc(p.name)}" width="100" height="100">` : `<span aria-hidden="true">${p.emoji||"🔗"}</span>`;
-  const pills = `${p.best?'<span class="pill best">ĐÁNG TIỀN NHẤT</span>':''}<span class="pill aff">AFFILIATE</span>`;
+  const pills = `${p.best?'<span class="pill best">ĐÁNG TIỀN NHẤT</span>':''}`;
   html += `<a class="pcard ${p.best?'star':''}" href="${p.url}" target="_blank" rel="noopener nofollow sponsored" data-track="${slug(p.name)}-aff">
     <span class="pimg">${img}</span>
     <span class="pbody">
