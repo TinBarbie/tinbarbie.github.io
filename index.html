@@ -119,6 +119,15 @@
   .vxt .vps-mark{color:#22C55E}
   .vxt .vps-mark span{color:#F97316}
   .vxt .vps-cta{background:#22C55E;color:#04210f}
+  /* ===== Instant Gaming block (purple/blue variant, under Vé Xe Tốt) ===== */
+  a.vps.ig{background:linear-gradient(150deg,rgba(124,92,255,.16),rgba(59,130,246,.10) 70%),var(--card);
+    border-color:rgba(124,92,255,.45);box-shadow:0 0 0 1px rgba(124,92,255,.2),0 16px 44px rgba(124,92,255,.2)}
+  a.vps.ig:hover{box-shadow:0 0 0 1px rgba(124,92,255,.34),0 20px 54px rgba(124,92,255,.28)}
+  a.vps.ig:focus-visible{box-shadow:0 0 0 3px #7C5CFF,0 0 0 6px #3B82F644}
+  .ig .vps-badge{background:#7C5CFF}
+  .ig .vps-mark{color:#7C5CFF}
+  .ig .vps-mark span{color:#3B82F6}
+  .ig .vps-cta{background:#7C5CFF;color:#0a0620}
   .disc{font-size:11.5px;color:#cfd5ff;text-align:center;line-height:1.55;margin:20px 8px 8px;
     border-top:1px solid var(--line);padding-top:16px;width:100%}
   .foot{font-size:11px;color:#cfd5ff;margin-top:10px}
@@ -219,12 +228,8 @@ const PROFILE = {
   handle: "@60s.cong.nghe.cung.tin",
   bio:    "Mỗi ngày 1 repo/tool công nghệ đáng thử, giải thích trong 60 giây 🔥 cho dev · gamer · người mê AI. Theo dõi để không bỏ lỡ. Tool & đồ nghề mình dùng ở dưới 👇"
 };
-const LINKS = [
-  { section:"Theo dõi mình trên các nền tảng", icon:"🎵", label:"TikTok", sub:"@60s.cong.nghe.cung.tin", url:"https://www.tiktok.com/@60s.cong.nghe.cung.tin", primary:true },
-  { icon:"📘", label:"Facebook", sub:"theo dõi thêm trên Facebook", url:"https://www.facebook.com/profile.php?id=61581490000312" },
-  { icon:"📸", label:"Instagram", sub:"@60s_cong_nghe_cung_tin", url:"https://www.instagram.com/60s_cong_nghe_cung_tin/" },
-  { icon:"▶️", label:"YouTube", sub:"kênh YouTube của mình", url:"https://www.youtube.com/@60sC%C3%B4ngNgh%E1%BB%87c%C3%B9ngT%C3%ADn" },
-];
+// social "Theo dõi trên các nền tảng" section removed (user 2026-08-11 — không còn duy trì kênh khác)
+const LINKS = [];
 const PRODUCTS = [
   { emoji:"🎙️", name:"ElevenLabs — giọng AI mình lồng tiếng video", why:"Cái mình dùng để tạo voiceover cho mọi video. Có bản miễn phí để thử.", price:"Có bản FREE", url:"https://try.elevenlabs.io/61mv3aj67c86", best:true },
   { emoji:"📚", name:"Sách AI mình gối đầu", why:"Cuốn mình đọc đi đọc lại để hiểu AI từ gốc.", price:"Xem giá", url:"https://vt.tiktok.com/ZS96JHPu2jLJy-FKXZC/" },
@@ -258,7 +263,14 @@ html += `<a class="vps vxt" href="${VXT.url}" target="_blank" rel="noopener nofo
   <span class="vps-cta">Đặt vé xe ngay ›</span>
 </a>`;
 
-// (social platforms rendered below, after the tools block)
+// ===== Instant Gaming block — right after Vé Xe Tốt =====
+const IG = { url:"https://www.instant-gaming.com/?igr=gamer-51f1b42" };
+html += `<a class="vps ig" href="${IG.url}" target="_blank" rel="noopener nofollow sponsored" data-track="instantgaming-aff">
+  <span class="vps-badge">GAME GIÁ RẺ</span>
+  <span class="vps-mark">🎮 Instant <span>Gaming</span></span>
+  <span class="vps-tag">Muốn chơi game? Mua key bản quyền giá rẻ cho PC, Steam, console. Săn deal game ngon.</span>
+  <span class="vps-cta">Mua game ngay ›</span>
+</a>`;
 
 html += `<div class="seg">🛠️ Đồ nghề & tool mình thật sự dùng<span class="note">Đúng món mình dùng để làm mấy video bạn xem. Link affiliate — ủng hộ kênh nha 🙏</span></div>`;
 PRODUCTS.forEach(p=>{
