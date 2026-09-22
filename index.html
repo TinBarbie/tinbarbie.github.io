@@ -110,15 +110,6 @@
   .vps-cta{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;
     background:var(--a2);color:#04201c;font-size:15px;font-weight:900;border-radius:13px;padding:14px}
   .vps-disc{font-size:10.5px;color:#8089ad;text-align:center;margin-top:10px}
-  /* ===== vexetot featured block (green variant of .vps, sits right after VPSTTT) ===== */
-  a.vps.vxt{background:linear-gradient(150deg,rgba(34,197,94,.14),rgba(249,115,22,.09) 70%),var(--card);
-    border-color:rgba(34,197,94,.42);box-shadow:0 0 0 1px rgba(34,197,94,.18),0 16px 44px rgba(34,197,94,.18)}
-  a.vps.vxt:hover{box-shadow:0 0 0 1px rgba(34,197,94,.32),0 20px 54px rgba(34,197,94,.26)}
-  a.vps.vxt:focus-visible{box-shadow:0 0 0 3px #22C55E,0 0 0 6px #F9731644}
-  .vxt .vps-badge{background:#22C55E}
-  .vxt .vps-mark{color:#22C55E}
-  .vxt .vps-mark span{color:#F97316}
-  .vxt .vps-cta{background:#22C55E;color:#04210f}
   /* ===== PhoneGrid block (indigo/cyan variant, right after VPSTTT) ===== */
   a.vps.pg{background:linear-gradient(150deg,rgba(99,102,241,.16),rgba(34,211,238,.10) 70%),var(--card);
     border-color:rgba(99,102,241,.45);box-shadow:0 0 0 1px rgba(99,102,241,.2),0 16px 44px rgba(99,102,241,.2)}
@@ -131,7 +122,7 @@
   .pg .vps-code .val{color:#22D3EE}
   .pg .vps-copy{background:#6366F1;color:#fff}
   .pg .vps-cta{background:#6366F1;color:#fff}
-  /* ===== Instant Gaming block (purple/blue variant, under Vé Xe Tốt) ===== */
+  /* ===== Instant Gaming block (purple/blue variant) ===== */
   a.vps.ig{background:linear-gradient(150deg,rgba(124,92,255,.16),rgba(59,130,246,.10) 70%),var(--card);
     border-color:rgba(124,92,255,.45);box-shadow:0 0 0 1px rgba(124,92,255,.2),0 16px 44px rgba(124,92,255,.2)}
   a.vps.ig:hover{box-shadow:0 0 0 1px rgba(124,92,255,.34),0 20px 54px rgba(124,92,255,.28)}
@@ -290,16 +281,7 @@ html += `<a class="vps pg" href="${PG.url}" target="_blank" rel="noopener nofoll
   <span class="vps-cta">Dùng thử PhoneGrid ›</span>
 </a>`;
 
-// ===== vexetot featured block — right after VPSTTT =====
-const VXT = { url:"https://vexetot.com?ref=8YZFGWLB" };
-html += `<a class="vps vxt" href="${VXT.url}" target="_blank" rel="noopener nofollow" data-track="vexetot-aff">
-  <span class="vps-badge">GIÁ CỰC TỐT</span>
-  <span class="vps-mark">🚌 Vé Xe <span>Tốt</span></span>
-  <span class="vps-tag">Đặt vé xe khách online: so giá nhà xe, chọn chỗ, đặt trước khỏi ra bến.</span>
-  <span class="vps-cta">Đặt vé xe ngay ›</span>
-</a>`;
-
-// ===== Instant Gaming block — right after Vé Xe Tốt =====
+// ===== Instant Gaming block =====
 const IG = { url:"https://www.instant-gaming.com/?igr=gamer-51f1b42" };
 html += `<a class="vps ig" href="${IG.url}" target="_blank" rel="noopener nofollow sponsored" data-track="instantgaming-aff">
   <span class="vps-badge">GAME GIÁ RẺ</span>
