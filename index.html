@@ -119,6 +119,18 @@
   .vxt .vps-mark{color:#22C55E}
   .vxt .vps-mark span{color:#F97316}
   .vxt .vps-cta{background:#22C55E;color:#04210f}
+  /* ===== PhoneGrid block (indigo/cyan variant, right after VPSTTT) ===== */
+  a.vps.pg{background:linear-gradient(150deg,rgba(99,102,241,.16),rgba(34,211,238,.10) 70%),var(--card);
+    border-color:rgba(99,102,241,.45);box-shadow:0 0 0 1px rgba(99,102,241,.2),0 16px 44px rgba(99,102,241,.2)}
+  a.vps.pg:hover{box-shadow:0 0 0 1px rgba(99,102,241,.34),0 20px 54px rgba(99,102,241,.28)}
+  a.vps.pg:focus-visible{box-shadow:0 0 0 3px #6366F1,0 0 0 6px #22D3EE44}
+  .pg .vps-badge{background:#6366F1;color:#fff}
+  .pg .vps-mark{color:#818CF8}
+  .pg .vps-mark span{color:#22D3EE}
+  .pg .vps-code{border-color:rgba(99,102,241,.5)}
+  .pg .vps-code .val{color:#22D3EE}
+  .pg .vps-copy{background:#6366F1;color:#fff}
+  .pg .vps-cta{background:#6366F1;color:#fff}
   /* ===== Instant Gaming block (purple/blue variant, under Vé Xe Tốt) ===== */
   a.vps.ig{background:linear-gradient(150deg,rgba(124,92,255,.16),rgba(59,130,246,.10) 70%),var(--card);
     border-color:rgba(124,92,255,.45);box-shadow:0 0 0 1px rgba(124,92,255,.2),0 16px 44px rgba(124,92,255,.2)}
@@ -266,6 +278,16 @@ html += `<a class="vps" href="${VPS.url}" target="_blank" rel="noopener nofollow
   <span class="vps-tag">VPS · Proxy · Hosting · Lưu trữ · Máy chủ · Mạng · Bảo mật. Nhập mã lúc đăng ký để nhận ưu đãi.</span>
   <span class="vps-code"><span class="lab">Mã giới thiệu</span><span class="val">${VPS.code}</span><button type="button" class="vps-copy" data-copy="${VPS.code}">Sao chép</button></span>
   <span class="vps-cta">Đăng ký VPSTTT ›</span>
+</a>`;
+
+// ===== PhoneGrid featured block — right after VPSTTT =====
+const PG = { url:"https://www.phonegrid.com/?from=AA32lOPiWuS4", code:"60SCUNGTIN" };
+html += `<a class="vps pg" href="${PG.url}" target="_blank" rel="noopener nofollow sponsored" data-track="phonegrid-aff">
+  <span class="vps-badge">GIẢM 15%</span>
+  <span class="vps-mark">Phone<span>Grid</span></span>
+  <span class="vps-tag">Điện thoại đám mây: dựng cả trăm máy Android, tự động hoá qua API/MCP. Test app · QA · quản nhiều tài khoản, cả team từ xa. Nhập mã để giảm 15%.</span>
+  <span class="vps-code"><span class="lab">Mã giảm giá</span><span class="val">${PG.code}</span><button type="button" class="vps-copy" data-copy="${PG.code}">Sao chép</button></span>
+  <span class="vps-cta">Dùng thử PhoneGrid ›</span>
 </a>`;
 
 // ===== vexetot featured block — right after VPSTTT =====
