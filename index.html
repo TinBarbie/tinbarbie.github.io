@@ -58,6 +58,7 @@
   .tx{display:flex;flex-direction:column;min-width:0}
   .lbl{font-size:16px;font-weight:700;overflow:hidden;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical}
   .sub{font-size:12.5px;color:var(--dim);overflow:hidden;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical}
+  a.wrap .lbl{display:block;-webkit-line-clamp:unset;overflow:visible;white-space:normal}
   a.svc .lbl,a.svc .sub{display:block;-webkit-line-clamp:unset;overflow:visible;white-space:normal}
   a.svc .sub{line-height:1.35}
   .chev{margin-left:auto;color:var(--dim);font-size:18px;flex:0 0 auto}
@@ -317,6 +318,9 @@ html += `<a class="btn" href="${CONTACT.url}" data-email="${CONTACT.url.slice(7)
   <span class="ic" aria-hidden="true">${CONTACT.icon}</span><span class="tx"><span class="lbl">${esc(CONTACT.label)}</span><span class="sub">${esc(CONTACT.sub)}</span></span><span class="chev" aria-hidden="true">›</span></a>`;
 html += `<a class="btn svc" href="https://docs.google.com/forms/d/e/1FAIpQLSe7LX72KT3DPH8VHcFaDJaVZNo5zGemp1810Gw37pw8IP40gw/viewform" target="_blank" rel="noopener" data-track="chatbot-service">
   <span class="ic" aria-hidden="true">🤖</span><span class="tx"><span class="lbl">Nhận làm Chatbot AI (web / Zalo OA)</span><span class="sub">Tự trả lời, chốt đơn, chăm khách 24/7. Điền form nhận tư vấn & báo giá.</span></span><span class="chev" aria-hidden="true">›</span></a>`;
+
+html += `<a class="btn wrap" href="${CONTACT.url}" data-email="${CONTACT.url.slice(7)}" data-track="gia-cong-phan-mem">
+  <span class="ic" aria-hidden="true">💻</span><span class="tx"><span class="lbl">Nhận gia công phần mềm / website</span><span class="sub">làm theo yêu cầu · liên hệ báo giá</span></span><span class="chev" aria-hidden="true">›</span></a>`;
 
 // Web nhỏ mình vibe code — chia sẻ cho audience (không phải affiliate)
 html += `<div class="seg">🌙 Web nhỏ mình vibe code<span class="note">Làm cho vui & chia sẻ — chưa thương mại hoá. Bạn dùng thấy hay thì mình sẽ phát triển tiếp 💜</span></div>`;
