@@ -147,6 +147,19 @@
   .zl .vps-list{margin-bottom:16px}
   @media (max-width:520px){.zl .vps-mark{padding-right:0;padding-top:22px}}
   #links > a.vps.zl{grid-column:1 / -1}
+  /* ===== Zalo sheet: hướng dẫn khi mở trong trình duyệt của TikTok/FB/IG (chặn mở app Zalo) ===== */
+  .zsheet{position:fixed;inset:0;z-index:120;display:none;align-items:flex-end;justify-content:center;background:rgba(3,6,18,.72)}
+  .zsheet.on{display:flex}
+  .zbox{width:100%;max-width:480px;background:#101734;border:1px solid rgba(0,104,255,.55);border-radius:22px 22px 0 0;
+    padding:22px 20px calc(22px + env(safe-area-inset-bottom));box-shadow:0 -12px 40px rgba(0,104,255,.25)}
+  .zbox h3{font-size:19px;font-weight:900;color:#fff;margin-bottom:6px}
+  .zbox p{font-size:14px;color:#c7d0ff;line-height:1.5}
+  .zstep{display:flex;gap:12px;margin-top:14px;align-items:flex-start}
+  .zstep b{flex:0 0 26px;height:26px;border-radius:50%;background:#0068FF;color:#fff;display:grid;place-items:center;font-size:13px}
+  .zstep span{font-size:14px;color:#e6eaff;line-height:1.5}
+  .zbtn{display:block;width:100%;margin-top:14px;border:none;border-radius:13px;padding:14px;font-size:15px;font-weight:900;cursor:pointer}
+  .zbtn.pri{background:#0068FF;color:#fff}
+  .zbtn.sec{background:transparent;color:#9fb4ff;border:1px solid rgba(159,180,255,.35)}
   /* ===== Instant Gaming block (purple/blue variant) ===== */
   a.vps.ig{background:linear-gradient(150deg,rgba(124,92,255,.16),rgba(59,130,246,.10) 70%),var(--card);
     border-color:rgba(124,92,255,.45);box-shadow:0 0 0 1px rgba(124,92,255,.2),0 16px 44px rgba(124,92,255,.2)}
@@ -241,6 +254,16 @@
   <div class="cos-obj" style="top:64vh;left:60vw;width:clamp(120px,18vw,240px)"><div class="cos-comet" style="animation-duration:18s;animation-delay:5s"><div style="position:relative;width:100%;height:2px"><div style="position:absolute;left:0;top:-2px;width:6px;height:6px;border-radius:50%;background:#eaf0ff;box-shadow:0 0 8px 2px rgba(201,184,255,.9)"></div><div style="width:100%;height:2px;border-radius:2px;background:linear-gradient(90deg,rgba(234,240,255,.95) 0%,rgba(201,184,255,.5) 30%,rgba(201,184,255,0) 100%)"></div></div></div></div>
 </div>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
+<div id="zsheet" class="zsheet" role="dialog" aria-modal="true" aria-labelledby="zt">
+  <div class="zbox">
+    <h3 id="zt">Mở group Zalo</h3>
+    <p>Trình duyệt trong app này chặn mở thẳng Zalo. Bạn làm 1 trong 2 cách:</p>
+    <div class="zstep"><b>1</b><span>Bấm <strong>•••</strong> ở góc trên bên phải, chọn <strong>Mở trong trình duyệt</strong>, rồi bấm lại nút "Vào group Zalo".</span></div>
+    <div class="zstep"><b>2</b><span>Sao chép link bên dưới, mở Zalo, dán vào ô tìm kiếm (hoặc gửi cho Cloud của tôi) rồi bấm vào link.</span></div>
+    <button type="button" class="zbtn pri" id="zcopy">Sao chép link group Zalo</button>
+    <button type="button" class="zbtn sec" id="zclose">Đóng</button>
+  </div>
+</div>
 <div class="page">
   <div class="avatar" id="av">🦌</div>
   <h1 class="name" id="nm">60s Công Nghệ Cùng Tin <span class="v" aria-hidden="true">✔</span></h1>
@@ -289,7 +312,7 @@ let html = "";
 
 // ===== Zalo group: bộ quà tool video — TOP of page =====
 const ZL = { url:"https://zalo.me/g/27t9e3kjxxplzowpjnvu" };
-html += `<a class="vps zl" href="${ZL.url}" target="_blank" rel="noopener" data-track="zalo-group-gift">
+html += `<a class="vps zl" href="${ZL.url}" target="_blank" rel="noopener" data-track="zalo-group-gift" data-zalo="${ZL.url}">
   <span class="vps-badge">QUÀ MIỄN PHÍ</span>
   <span class="vps-mark">🎁 Bộ quà <span>tool làm video</span></span>
   <span class="vps-tag">Vào group Zalo nhận trọn bộ tool mình dùng để làm video, kèm hướng dẫn cài từng bước. Group có admin trao đổi và giải đáp thắc mắc và các nhu cầu về tool Công Nghệ.</span>
@@ -381,6 +404,8 @@ document.addEventListener("click", e => {
   }
   const a = e.target.closest("a[data-track]");
   if(!a) return;
+  const zl = a.getAttribute("data-zalo");
+  if (zl && IN_APP) { e.preventDefault(); openZalo(zl); }
   const name = a.getAttribute("data-track");
   try { if (window.goatcounter && window.goatcounter.count)
     window.goatcounter.count({ path: "click/" + name, title: a.querySelector(".lbl,.pname")?.textContent || name, event: true }); } catch(_) {}
@@ -391,6 +416,18 @@ document.addEventListener("click", e => {
     if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(email).then(ok).catch(() => fallbackCopy(email, ok));
     else fallbackCopy(email, ok);
   }
+});
+// TikTok/Facebook/Instagram in-app browsers block the zalo:// app hand-off ("Không thể hoàn tất hành động")
+const IN_APP = /musical_ly|TikTok|BytedanceWebview|trill_|Instagram|FBAN|FBAV|FB_IAB|Messenger|Line\//i.test(navigator.userAgent);
+const zs = document.getElementById("zsheet");
+let zUrl = "";
+function openZalo(url){ zUrl = url; zs.classList.add("on"); }
+zs.addEventListener("click", e => { if (e.target === zs) zs.classList.remove("on"); });
+document.getElementById("zclose").addEventListener("click", () => zs.classList.remove("on"));
+document.getElementById("zcopy").addEventListener("click", () => {
+  const ok = () => showToast("📋 Đã sao chép link group · mở Zalo dán vào nhé");
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(zUrl).then(ok).catch(() => fallbackCopy(zUrl, ok));
+  else fallbackCopy(zUrl, ok);
 });
 function fallbackCopy(text, done){
   try { const ta=document.createElement("textarea"); ta.value=text; ta.setAttribute("readonly",""); ta.style.position="fixed"; ta.style.opacity="0";
