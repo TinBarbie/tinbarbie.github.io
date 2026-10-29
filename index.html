@@ -406,6 +406,11 @@ document.addEventListener("click", e => {
   if(!a) return;
   const zl = a.getAttribute("data-zalo");
   if (zl && IN_APP) { e.preventDefault(); openZalo(zl); }
+  // Fallback when the UA isn't recognised: on a phone, if Zalo didn't take over the screen within ~1.5s
+  // (the in-app browser blocked it), show the same help sheet.
+  else if (zl && matchMedia("(pointer:coarse)").matches) {
+    setTimeout(() => { if (!document.hidden) openZalo(zl); }, 1500);
+  }
   const name = a.getAttribute("data-track");
   try { if (window.goatcounter && window.goatcounter.count)
     window.goatcounter.count({ path: "click/" + name, title: a.querySelector(".lbl,.pname")?.textContent || name, event: true }); } catch(_) {}
