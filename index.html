@@ -132,6 +132,21 @@
   .pg .vps-code .val{color:#22D3EE}
   .pg .vps-copy{background:#6366F1;color:#fff}
   .pg .vps-cta{background:#6366F1;color:#fff}
+  /* ===== Zalo group gift block (TOP, full width) ===== */
+  a.vps.zl{background:linear-gradient(150deg,rgba(0,104,255,.20),rgba(34,211,238,.10) 70%),var(--card);
+    border-color:rgba(0,104,255,.6);box-shadow:0 0 0 1px rgba(0,104,255,.26),0 16px 44px rgba(0,104,255,.26)}
+  a.vps.zl:hover{box-shadow:0 0 0 1px rgba(0,104,255,.4),0 20px 54px rgba(0,104,255,.34)}
+  a.vps.zl:focus-visible{box-shadow:0 0 0 3px #0068FF,0 0 0 6px #22D3EE44}
+  .zl .vps-badge{background:#FBBF24;color:#1a1200}
+  .zl .vps-mark{color:#4C9BFF}
+  .zl .vps-mark span{color:#22D3EE}
+  .zl .vps-list{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px}
+  .zl .vps-list span{font-size:12px;font-weight:700;color:#cfe2ff;background:#0a1630;border:1px solid rgba(0,104,255,.45);border-radius:999px;padding:5px 11px}
+  .zl .vps-cta{background:#0068FF;color:#fff}
+  .zl .vps-mark{display:block;padding-right:128px}
+  .zl .vps-list{margin-bottom:16px}
+  @media (max-width:520px){.zl .vps-mark{padding-right:0;padding-top:22px}}
+  #links > a.vps.zl{grid-column:1 / -1}
   /* ===== Instant Gaming block (purple/blue variant) ===== */
   a.vps.ig{background:linear-gradient(150deg,rgba(124,92,255,.16),rgba(59,130,246,.10) 70%),var(--card);
     border-color:rgba(124,92,255,.45);box-shadow:0 0 0 1px rgba(124,92,255,.2),0 16px 44px rgba(124,92,255,.2)}
@@ -271,6 +286,16 @@ const slug = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ đ]/g, m => m
 const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const wrap = document.getElementById("links");
 let html = "";
+
+// ===== Zalo group: bộ quà tool video — TOP of page =====
+const ZL = { url:"https://zalo.me/g/27t9e3kjxxplzowpjnvu" };
+html += `<a class="vps zl" href="${ZL.url}" target="_blank" rel="noopener" data-track="zalo-group-gift">
+  <span class="vps-badge">QUÀ MIỄN PHÍ</span>
+  <span class="vps-mark">🎁 Bộ quà <span>tool làm video</span></span>
+  <span class="vps-tag">Vào group Zalo nhận trọn bộ tool mình dùng để làm video, kèm hướng dẫn cài từng bước. Thắc mắc gì hỏi luôn trong group.</span>
+  <span class="vps-list"><span>Dựng video bằng code</span><span>Phụ đề tự động</span><span>Quay màn hình đẹp</span><span>Agent nghiên cứu</span><span>Skill cho AI agent</span></span>
+  <span class="vps-cta">Vào group Zalo nhận quà ›</span>
+</a>`;
 
 // ===== VPSTTT featured block — TOP of page =====
 const VPS = { url:"https://order.vpsttt.com/dangky?helo9532", code:"helo9532" };
