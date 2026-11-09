@@ -147,6 +147,26 @@
   .zl .vps-list{margin-bottom:16px}
   @media (max-width:520px){.zl .vps-mark{padding-right:0;padding-top:22px}}
   #links > a.vps.zl{grid-column:1 / -1}
+  /* ===== Bé Xíu block (app của mình, ngay sau block Zalo) ===== */
+  div.vps.bx{width:100%;display:block;color:var(--ink);position:relative;overflow:hidden;border-radius:20px;padding:20px 20px 18px;margin:4px 0 6px;
+    background:linear-gradient(150deg,rgba(242,185,90,.20),rgba(236,72,153,.10) 70%),var(--card);
+    border:1px solid rgba(242,185,90,.6);box-shadow:0 0 0 1px rgba(242,185,90,.24),0 16px 44px rgba(242,185,90,.2)}
+  #links > .vps.bx{grid-column:1 / -1}
+  .bx .vps-badge{background:#f2b95a;color:#1d2138}
+  .bx-head{display:flex;align-items:center;gap:14px;padding-right:118px}
+  .bx-head img{width:58px;height:58px;border-radius:15px;flex:0 0 auto;box-shadow:0 6px 18px rgba(0,0,0,.35)}
+  .bx .vps-mark{color:#f6c873}
+  .bx .vps-mark span{color:#f58fb4}
+  .bx .vps-tag{color:#f3e6d2}
+  .bx-list{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px}
+  .bx-list span{font-size:12px;font-weight:700;color:#ffe9c4;background:#241a0e;border:1px solid rgba(242,185,90,.45);border-radius:999px;padding:5px 11px}
+  .bx-acts{display:flex;gap:10px;margin-top:16px}
+  .bx-acts a{flex:1;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:15px;font-weight:900;border-radius:13px;padding:14px}
+  .bx-acts a.pri{background:#f2b95a;color:#1d2138}
+  .bx-acts a.sec{flex:0 0 auto;padding:14px 16px;background:transparent;color:#f6c873;border:1px solid rgba(242,185,90,.6)}
+  .bx-acts a:focus-visible{outline:3px solid #f2b95a;outline-offset:3px}
+  .bx .vps-disc{color:#bfae95}
+  @media (max-width:520px){.bx-head{padding-right:0;padding-top:22px}}
   /* ===== Zalo sheet: hướng dẫn khi mở trong trình duyệt của TikTok/FB/IG (chặn mở app Zalo) ===== */
   .zsheet{position:fixed;inset:0;z-index:120;display:none;align-items:flex-end;justify-content:center;background:rgba(3,6,18,.72)}
   .zsheet.on{display:flex}
@@ -320,6 +340,18 @@ html += `<a class="vps zl" href="${ZL.url}" target="_blank" rel="noopener" data-
   <span class="vps-cta">Vào group Zalo nhận quà ›</span>
 </a>`;
 
+// ===== Bé Xíu: app nhật ký chăm bé của mình — ngay sau block Zalo =====
+const BX = { site:"https://www.bexiu.net", form:"https://forms.gle/S8zXeP7hGWUWYo1V6" };
+html += `<div class="vps bx">
+  <span class="vps-badge">BETA SẮP RA MẮT</span>
+  <span class="bx-head"><img src="img/bexiu.png" alt="Bé Xíu" width="58" height="58"><span><span class="vps-mark">Bé <span>Xíu</span></span>
+  <span class="vps-tag" style="display:block">App nhật ký chăm bé của mình làm</span></span></span>
+  <span class="vps-tag" style="display:block;margin-top:12px">Tay bế con, tay kia vẫn ghi kịp cữ bú. Ghi bú, ngủ, thay tã, sốt chỉ bằng 1 chạm, dùng cho bé từ lúc mới sinh tới 3 tuổi. Dữ liệu nằm trên máy của ba mẹ.</span>
+  <span class="bx-list"><span>Ghi 1 chạm</span><span>Không cần mạng</span><span>Không quảng cáo</span><span>Không tạo tài khoản</span><span>Sao lưu được</span></span>
+  <span class="bx-acts"><a class="pri" href="${BX.form}" target="_blank" rel="noopener" data-track="bexiu-beta-signup">Đăng ký dùng thử ›</a><a class="sec" href="${BX.site}" target="_blank" rel="noopener" data-track="bexiu-site">bexiu.net</a></span>
+  <span class="vps-disc" style="display:block">Chỉ cần email, miễn phí. Android trước, iPhone sau.</span>
+</div>`;
+
 // ===== VPSTTT featured block — TOP of page =====
 const VPS = { url:"https://order.vpsttt.com/dangky?helo9532", code:"helo9532" };
 html += `<a class="vps" href="${VPS.url}" target="_blank" rel="noopener nofollow" data-track="vpsttt-aff">
@@ -378,17 +410,6 @@ html += `<a class="btn svc" href="https://docs.google.com/forms/d/e/1FAIpQLSe7LX
 
 html += `<a class="btn svc sky" href="${CONTACT.url}" data-email="${CONTACT.url.slice(7)}" data-track="gia-cong-phan-mem">
   <span class="ic" aria-hidden="true">💻</span><span class="tx"><span class="lbl">Nhận gia công phần mềm / website</span><span class="sub">làm theo yêu cầu · liên hệ báo giá</span></span><span class="chev" aria-hidden="true">›</span></a>`;
-
-// Web nhỏ mình vibe code — chia sẻ cho audience (không phải affiliate)
-html += `<div class="seg">🌙 Web nhỏ mình vibe code<span class="note">Làm cho vui & chia sẻ — chưa thương mại hoá. Bạn dùng thấy hay thì mình sẽ phát triển tiếp 💜</span></div>`;
-html += `<a class="pcard mine star" href="https://sleepy-soundscape-z-ai.vercel.app/" target="_blank" rel="noopener" data-track="sleepy-soundscape">
-  <span class="pimg"><span aria-hidden="true">🌙</span></span>
-  <span class="pbody">
-    <span class="ptop"><span class="pill mine">MÌNH LÀM</span></span>
-    <span class="pname">Sleepy Soundscape</span>
-    <span class="pwhy">Web tự trộn âm thanh nền, dễ ngủ hơn và tập trung học · làm việc tốt hơn. Mình tự vibe code — miễn phí, hy vọng giúp ích cho bạn.</span>
-    <span class="prow"><span class="price" style="color:#c9b8ff">Miễn phí · thử ngay</span><span class="pcta">Mở web ›</span></span>
-  </span></a>`;
 
 wrap.innerHTML = html;
 
