@@ -167,6 +167,13 @@
   .bx-acts a:focus-visible{outline:3px solid #f2b95a;outline-offset:3px}
   .bx .vps-disc{color:#bfae95}
   @media (max-width:520px){.bx-head{padding-right:0;padding-top:22px}}
+  /* ===== Zalo + Bé Xíu: 1 dòng 2 cột trên máy tính, xếp dọc trên điện thoại ===== */
+  #links > .duo{grid-column:1 / -1; display:grid; grid-template-columns:1fr; gap:14px; align-items:stretch}
+  @media (min-width:860px){ #links > .duo{grid-template-columns:1fr 1fr} }
+  .duo > .vps{margin:0; height:100%; display:flex; flex-direction:column}
+  .duo > .vps.bx{margin:0}
+  .duo > a.vps .vps-cta{margin-top:auto}
+  .duo > .vps.bx .bx-acts{margin-top:auto; padding-top:16px}
   /* ===== Zalo sheet: hướng dẫn khi mở trong trình duyệt của TikTok/FB/IG (chặn mở app Zalo) ===== */
   .zsheet{position:fixed;inset:0;z-index:120;display:none;align-items:flex-end;justify-content:center;background:rgba(3,6,18,.72)}
   .zsheet.on{display:flex}
@@ -332,6 +339,7 @@ let html = "";
 
 // ===== Zalo group: bộ quà tool video — TOP of page =====
 const ZL = { url:"https://zalo.me/g/27t9e3kjxxplzowpjnvu" };
+html += `<div class="duo">`;
 html += `<a class="vps zl" href="${ZL.url}" target="_blank" rel="noopener" data-track="zalo-group-gift" data-zalo="${ZL.url}">
   <span class="vps-badge">QUÀ MIỄN PHÍ</span>
   <span class="vps-mark">🎁 Bộ quà <span>tool làm video</span></span>
@@ -351,6 +359,8 @@ html += `<div class="vps bx">
   <span class="bx-acts"><a class="pri" href="${BX.form}" target="_blank" rel="noopener" data-track="bexiu-beta-signup">Đăng ký dùng thử ›</a><a class="sec" href="${BX.site}" target="_blank" rel="noopener" data-track="bexiu-site">bexiu.net</a></span>
   <span class="vps-disc" style="display:block">Chỉ cần email, miễn phí. Android trước, iPhone sau.</span>
 </div>`;
+
+html += `</div>`;
 
 // ===== VPSTTT featured block — TOP of page =====
 const VPS = { url:"https://order.vpsttt.com/dangky?helo9532", code:"helo9532" };
