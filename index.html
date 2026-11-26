@@ -166,7 +166,7 @@
   .bx-acts a.sec{flex:0 0 auto;padding:14px 16px;background:transparent;color:#f6c873;border:1px solid rgba(242,185,90,.6)}
   .bx-acts a:focus-visible{outline:3px solid #f2b95a;outline-offset:3px}
   .bx .vps-disc{color:#bfae95}
-  @media (max-width:520px){.bx-head{padding-right:0;padding-top:22px}}
+  @media (max-width:520px){.bx-head{padding-right:0;padding-top:22px} .bx-acts{flex-direction:column} .bx-acts a.sec{flex:1}}
   /* ===== Zalo + Bé Xíu: 1 dòng 2 cột trên máy tính, xếp dọc trên điện thoại ===== */
   #links > .duo{grid-column:1 / -1; display:grid; grid-template-columns:1fr; gap:14px; align-items:stretch}
   @media (min-width:860px){ #links > .duo{grid-template-columns:1fr 1fr} }
@@ -349,15 +349,15 @@ html += `<a class="vps zl" href="${ZL.url}" target="_blank" rel="noopener" data-
 </a>`;
 
 // ===== Bé Xíu: app nhật ký chăm bé của mình — ngay sau block Zalo =====
-const BX = { site:"https://www.bexiu.net", form:"https://forms.gle/S8zXeP7hGWUWYo1V6" };
+const BX = { site:"https://www.bexiu.net", form:"https://forms.gle/S8zXeP7hGWUWYo1V6", ios:"https://apps.apple.com/vn/app/id6831946083" };
 html += `<div class="vps bx">
-  <span class="vps-badge">BETA SẮP RA MẮT</span>
+  <span class="vps-badge">ĐÃ CÓ TRÊN APP STORE</span>
   <span class="bx-head"><img src="img/bexiu.png" alt="Bé Xíu" width="58" height="58"><span><span class="vps-mark">Bé <span>Xíu</span></span>
-  <span class="vps-tag" style="display:block">App nhật ký chăm bé của mình làm</span></span></span>
-  <span class="vps-tag" style="display:block;margin-top:12px">Tay bế con, tay kia vẫn ghi kịp cữ bú. Ghi bú, ngủ, thay tã, sốt chỉ bằng 1 chạm, dùng cho bé từ lúc mới sinh tới 3 tuổi. Dữ liệu nằm trên máy của ba mẹ.</span>
-  <span class="bx-list"><span>Ghi 1 chạm</span><span>Không cần mạng</span><span>Không quảng cáo</span><span>Không tạo tài khoản</span><span>Sao lưu được</span></span>
-  <span class="bx-acts"><a class="pri" href="${BX.form}" target="_blank" rel="noopener" data-track="bexiu-beta-signup">Đăng ký dùng thử ›</a><a class="sec" href="${BX.site}" target="_blank" rel="noopener" data-track="bexiu-site">bexiu.net</a></span>
-  <span class="vps-disc" style="display:block">Chỉ cần email, miễn phí. Android trước, iPhone sau.</span>
+  <span class="vps-tag" style="display:block">App nhật ký chăm bé của mình làm <span style="white-space:nowrap">· bản 0.1.6</span></span></span></span>
+  <span class="vps-tag" style="display:block;margin-top:12px">Ghi cữ bú một tay, cả nhà cùng xem. Bú, bình sữa, ngủ, thay tã chỉ cần 1 hoặc 2 lần bấm, kể cả lúc nửa đêm đang bế con. Dùng cho bé từ lúc mới sinh tới 3 tuổi.</span>
+  <span class="bx-list"><span>Cả nhà cùng ghi</span><span>Lịch tiêm Bộ Y tế</span><span>Tăng trưởng chuẩn WHO</span><span>Khung ảnh kỷ niệm</span><span>Không quảng cáo</span><span>Không cần tài khoản</span></span>
+  <span class="bx-acts"><a class="pri" href="${BX.ios}" target="_blank" rel="noopener" data-track="bexiu-appstore">Tải trên App Store ›</a><a class="sec" href="${BX.form}" target="_blank" rel="noopener" data-track="bexiu-beta-signup">Android: dùng thử</a></span>
+  <span class="vps-disc" style="display:block">Giai đoạn đầu dùng bản Pro miễn phí, không cần thẻ. Android đang thử kín: để lại email để nhận lời mời. Xem thêm ở <a href="${BX.site}" target="_blank" rel="noopener" data-track="bexiu-site" style="color:#f6c873;font-weight:700">bexiu.net</a>.</span>
 </div>`;
 
 html += `</div>`;
