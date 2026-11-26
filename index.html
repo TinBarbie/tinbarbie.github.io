@@ -166,6 +166,9 @@
   .bx-acts a.sec{flex:0 0 auto;padding:14px 16px;background:transparent;color:#f6c873;border:1px solid rgba(242,185,90,.6)}
   .bx-acts a:focus-visible{outline:3px solid #f2b95a;outline-offset:3px}
   .bx .vps-disc{color:#bfae95}
+  .bx-more a.sec{flex:1}
+  .bx-acts.bx-more{margin-top:10px}
+  .duo > .vps.bx .bx-acts.bx-more{margin-top:0; padding-top:10px}
   @media (max-width:520px){.bx-head{padding-right:0;padding-top:22px} .bx-acts{flex-direction:column} .bx-acts a.sec{flex:1}}
   /* ===== Zalo + Bé Xíu: 1 dòng 2 cột trên máy tính, xếp dọc trên điện thoại ===== */
   #links > .duo{grid-column:1 / -1; display:grid; grid-template-columns:1fr; gap:14px; align-items:stretch}
@@ -357,7 +360,7 @@ html += `<div class="vps bx">
   <span class="vps-tag" style="display:block;margin-top:12px">Ghi cữ bú một tay, cả nhà cùng xem. Bú, bình sữa, ngủ, thay tã chỉ cần 1 hoặc 2 lần bấm, kể cả lúc nửa đêm đang bế con. Dùng cho bé từ lúc mới sinh tới 3 tuổi.</span>
   <span class="bx-list"><span>Cả nhà cùng ghi</span><span>Lịch tiêm Bộ Y tế</span><span>Tăng trưởng chuẩn WHO</span><span>Khung ảnh kỷ niệm</span><span>Không quảng cáo</span><span>Không cần tài khoản</span></span>
   <span class="bx-acts"><a class="pri" href="${BX.ios}" target="_blank" rel="noopener" data-track="bexiu-appstore">Tải trên App Store ›</a><a class="sec" href="${BX.form}" target="_blank" rel="noopener" data-track="bexiu-beta-signup">Android: dùng thử</a></span>
-  <span class="vps-disc" style="display:block">Giai đoạn đầu dùng bản Pro miễn phí, không cần thẻ. Android đang thử kín: để lại email để nhận lời mời. Xem thêm ở <a href="${BX.site}" target="_blank" rel="noopener" data-track="bexiu-site" style="color:#f6c873;font-weight:700">bexiu.net</a>.</span>
+  <span class="bx-acts bx-more"><a class="sec" href="${BX.site}" target="_blank" rel="noopener" data-track="bexiu-site">Xem thêm ở bexiu.net ›</a></span>
 </div>`;
 
 html += `</div>`;
